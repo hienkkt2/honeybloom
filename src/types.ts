@@ -67,6 +67,23 @@ export interface CartItem {
   quantity: number;
 }
 
+export interface BookingRecord {
+  id: string;
+  clientName: string;
+  clientEmail: string;
+  clientPhone: string;
+  serviceNames: string[];
+  therapistName: string;
+  date: string;
+  timeSlot: string;
+  teaPreference: string;
+  hairType: string;
+  notes?: string;
+  totalGBP: number;
+  status: 'Confirmed' | 'Completed' | 'Pending' | 'Cancelled';
+  createdAt: string;
+}
+
 export interface BookingState {
   selectedServiceIds: string[];
   therapistId: string;

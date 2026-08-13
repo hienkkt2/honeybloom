@@ -3,25 +3,93 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Philosophy } from './components/Philosophy';
 import { HeadSpaGuide } from './components/HeadSpaGuide';
 import { ServiceMenu } from './components/ServiceMenu';
 import { BookingModal } from './components/BookingModal';
+import { AdminBookingPortal } from './components/AdminBookingPortal';
 import { Gallery } from './components/Gallery';
 import { GiftCards } from './components/GiftCards';
 import { Shop } from './components/Shop';
 import { Reviews } from './components/Reviews';
 import { LocationContact } from './components/LocationContact';
 import { Footer } from './components/Footer';
-import { CartItem, Product } from './types';
+import { BookingRecord, CartItem, Product } from './types';
+
+const INITIAL_BOOKINGS: BookingRecord[] = [
+  {
+    id: 'HNB-918234',
+    clientName: 'Sophie Turner',
+    clientEmail: 'sophie.t@example.com',
+    clientPhone: '+44 7712 984532',
+    serviceNames: ['7-Step Japanese Head Spa Ritual', 'Nourishing BIAB Gel Overlay'],
+    therapistName: 'Donna (Founder)',
+    date: '2026-08-14',
+    timeSlot: '11:00 AM',
+    teaPreference: 'Organic Honey Chrysanthemum',
+    hairType: 'Wavy / Textured',
+    notes: 'Scalp sensitivity near hairline, soft pressure requested.',
+    totalGBP: 175,
+    status: 'Confirmed',
+    createdAt: new Date(Date.now() - 3600000 * 3).toISOString(),
+  },
+  {
+    id: 'HNB-742910',
+    clientName: 'Chloe Bennett',
+    clientEmail: 'chloe.bennett@example.com',
+    clientPhone: '+44 7890 123456',
+    serviceNames: ['Royal Honey & Bloom Sanctuary Duo'],
+    therapistName: 'Maya (Senior Artist)',
+    date: '2026-08-15',
+    timeSlot: '02:00 PM',
+    teaPreference: 'Calming Lavender Rose Bath Tea',
+    hairType: 'Medium / Straight',
+    notes: 'Celebrating anniversary, requesting French BIAB design.',
+    totalGBP: 185,
+    status: 'Confirmed',
+    createdAt: new Date(Date.now() - 3600000 * 12).toISOString(),
+  },
+];
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [selectedBookingServiceId, setSelectedBookingServiceId] = useState<string | undefined>(undefined);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // Bookings Store (Persisted in localStorage)
+  const [bookings, setBookings] = useState<BookingRecord[]>(() => {
+    try {
+      const saved = localStorage.getItem('hnb_bookings_db');
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch {
+      // fallback
+    }
+    return INITIAL_BOOKINGS;
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('hnb_bookings_db', JSON.stringify(bookings));
+    } catch {
+      // storage error
+    }
+  }, [bookings]);
+
+  const handleAddBooking = (newBooking: BookingRecord) => {
+    setBookings((prev) => [newBooking, ...prev]);
+  };
+
+  const handleUpdateBookingStatus = (bookingId: string, newStatus: BookingRecord['status']) => {
+    setBookings((prev) =>
+      prev.map((b) => (b.id === bookingId ? { ...b, status: newStatus } : b))
+    );
+  };
 
   // Cart State
   const [cart, setCart] = useState<CartItem[]>([]);
@@ -82,6 +150,8 @@ export default function App() {
       <Header
         onOpenBooking={handleOpenBooking}
         onOpenCart={() => setIsCartOpen(true)}
+        onOpenAdminPortal={() => setIsAdminOpen(true)}
+        bookingCount={bookings.length}
         cartCount={totalCartCount}
         activeSection={activeSection}
         setActiveSection={setActiveSection}
@@ -138,6 +208,15 @@ export default function App() {
         isOpen={isBookingOpen}
         onClose={handleCloseBooking}
         initialServiceId={selectedBookingServiceId}
+        onAddBooking={handleAddBooking}
+      />
+
+      {/* Spa Staff & Salon Manager Booking Portal */}
+      <AdminBookingPortal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+        bookings={bookings}
+        onUpdateStatus={handleUpdateBookingStatus}
       />
     </div>
   );

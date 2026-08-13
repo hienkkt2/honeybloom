@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { X, Calendar, Clock, User, Sparkles, CheckCircle2, Coffee, MapPin, Download, ShieldCheck, ChevronRight } from 'lucide-react';
+import { X, Calendar, Clock, User, Sparkles, CheckCircle2, Coffee, MapPin, Download, ShieldCheck, ChevronRight, Mail, Send, BellRing } from 'lucide-react';
 import { SERVICES, THERAPISTS } from '../data/spaData';
-import { BookingState } from '../types';
+import { BookingRecord, BookingState } from '../types';
 
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialServiceId?: string;
+  onAddBooking?: (newBooking: BookingRecord) => void;
 }
 
-export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, initialServiceId }) => {
+export const BookingModal: React.FC<BookingModalProps> = ({
+  isOpen,
+  onClose,
+  initialServiceId,
+  onAddBooking,
+}) => {
   if (!isOpen) return null;
 
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
@@ -84,6 +90,27 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
     const randomRef = 'HNB-' + Math.floor(100000 + Math.random() * 900000);
     setBookingRef(randomRef);
     setIsConfirmed(true);
+
+    const newRecord: BookingRecord = {
+      id: randomRef,
+      clientName: clientName || 'Valued Guest',
+      clientEmail: clientEmail || 'guest@example.com',
+      clientPhone: clientPhone || '+44 7000 000000',
+      serviceNames: selectedServices.map((s) => s.name),
+      therapistName: THERAPISTS.find((t) => t.id === therapistId)?.name || 'Donna (Founder)',
+      date: selectedDate,
+      timeSlot: selectedTimeSlot,
+      teaPreference,
+      hairType,
+      notes,
+      totalGBP: subtotalGBP,
+      status: 'Confirmed',
+      createdAt: new Date().toISOString(),
+    };
+
+    if (onAddBooking) {
+      onAddBooking(newRecord);
+    }
   };
 
   return (
@@ -183,6 +210,48 @@ export const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose, ini
                   <MapPin className="w-3.5 h-3.5 text-[#8C7355] shrink-0" />
                   <span>55 Royal Crest Avenue, Royal Docks, London E16 2EB</span>
                 </div>
+              </div>
+
+              {/* Explicit Notification Channels Summary Box */}
+              <div className="bg-[#3D2E1E] text-amber-100 p-5 rounded-2xl text-left max-w-md mx-auto space-y-3 shadow-md border border-[#5A4836]">
+                <div className="flex items-center gap-2 border-b border-[#5A4836] pb-2 text-amber-300">
+                  <BellRing className="w-4 h-4 animate-bounce" />
+                  <h4 className="font-serif text-sm font-bold uppercase tracking-wider">
+                    Where Has Your Confirmation Been Sent?
+                  </h4>
+                </div>
+
+                <ul className="text-xs space-y-2.5 text-amber-200/90">
+                  <li className="flex items-start gap-2">
+                    <Mail className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block">1. Guest Email ({clientEmail || 'Your Email'}):</strong>
+                      <span className="text-[11px] text-amber-200/80">
+                        Instant reservation pass, reference code {bookingRef} & Google Calendar event file.
+                      </span>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-2">
+                    <Send className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block">2. WhatsApp Spa Concierge:</strong>
+                      <span className="text-[11px] text-amber-200/80">
+                        Direct alert dispatched to +44 7777 326555 so therapists prepare your treatment room.
+                      </span>
+                    </div>
+                  </li>
+
+                  <li className="flex items-start gap-2">
+                    <ShieldCheck className="w-4 h-4 text-amber-300 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block">3. Salon Manager & Staff Portal:</strong>
+                      <span className="text-[11px] text-amber-200/80">
+                        Synced automatically to the studio's live appointment ledger at Royal Docks, London.
+                      </span>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">

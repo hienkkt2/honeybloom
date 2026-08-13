@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Sparkles, Phone, Calendar, ShoppingBag, Menu, X, MapPin, Clock } from 'lucide-react';
+import { Sparkles, Phone, Calendar, ShoppingBag, Menu, X, MapPin, Clock, ClipboardList, Lock } from 'lucide-react';
 
 interface HeaderProps {
   onOpenBooking: (serviceId?: string) => void;
   onOpenCart: () => void;
+  onOpenAdminPortal?: () => void;
+  bookingCount?: number;
   cartCount: number;
   activeSection: string;
   setActiveSection: (section: string) => void;
@@ -12,6 +14,8 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   onOpenBooking,
   onOpenCart,
+  onOpenAdminPortal,
+  bookingCount = 0,
   cartCount,
   activeSection,
   setActiveSection,
@@ -111,7 +115,24 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Staff Manager Portal Button */}
+          {onOpenAdminPortal && (
+            <button
+              onClick={onOpenAdminPortal}
+              className="hidden lg:flex items-center gap-1.5 bg-[#EADCC9] hover:bg-[#DBCBB5] text-[#3D2E1E] px-3 py-2 rounded-full text-xs font-semibold tracking-wider transition-colors border border-[#CBB292]"
+              title="Confidential Salon Staff Portal (PIN Protected)"
+            >
+              <Lock className="w-3.5 h-3.5 text-[#8C7355]" />
+              <span>Manager Portal</span>
+              {bookingCount > 0 && (
+                <span className="bg-[#4A3B2C] text-amber-200 text-[10px] font-bold px-1.5 py-0.2 rounded-full">
+                  {bookingCount}
+                </span>
+              )}
+            </button>
+          )}
+
           {/* Shopping Cart Drawer Trigger */}
           <button
             onClick={onOpenCart}
