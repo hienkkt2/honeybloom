@@ -160,19 +160,39 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTo }) => {
         <div className="pt-8 border-t border-[#3D2E1E] flex flex-col md:flex-row items-center justify-between text-[11px] text-amber-200/60 gap-4 text-center md:text-left">
           <p>© {new Date().getFullYear()} Reverie Nail Studio. All Rights Reserved.</p>
           
-          {/* Digital Agency Credit */}
-          <div className="flex items-center gap-1.5 text-xs text-amber-200/80">
-            <span className="text-[11px] text-amber-200/70">Designed & Developed by</span>
-            <a
-              href="https://dinhhiendigital.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-100 font-semibold tracking-wide transition-all group px-2.5 py-1 rounded-full bg-[#3D2E1E] hover:bg-[#4A3B2C] border border-amber-300/25 shadow-2xs"
-              title="Visit Dinh Hien Digital"
-            >
-              <span>Đình Hiển Digital</span>
-              <ExternalLink className="w-3 h-3 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+          {/* Agency Credits (Web Design & Marketing Partner) */}
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-amber-200/80">
+            {/* Dinh Hien Digital - Web Design */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] text-amber-200/70">Thiết kế web:</span>
+              <a
+                href="https://dinhhiendigital.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-100 font-semibold tracking-wide transition-all group px-2.5 py-1 rounded-full bg-[#3D2E1E] hover:bg-[#4A3B2C] border border-amber-300/25 shadow-2xs text-[11px]"
+                title="Dịch vụ Thiết Kế Website Chuyên Nghiệp - Đình Hiển Digital"
+              >
+                <span>Đình Hiển Digital</span>
+                <ExternalLink className="w-3 h-3 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              </a>
+            </div>
+
+            <span className="text-amber-300/40 hidden sm:inline">•</span>
+
+            {/* Dinh Hien Marketing - Nail & Spa Marketing */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] text-amber-200/70">Marketing Nail & Spa:</span>
+              <a
+                href="https://dinhhienmarketing-ar9r.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-100 font-semibold tracking-wide transition-all group px-2.5 py-1 rounded-full bg-[#3D2E1E] hover:bg-[#4A3B2C] border border-amber-300/25 shadow-2xs text-[11px]"
+                title="Dịch Vụ Marketing Tiệm Nail & Spa - Đình Hiển Marketing"
+              >
+                <span>Đình Hiển Marketing</span>
+                <ExternalLink className="w-3 h-3 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0" />
+              </a>
+            </div>
           </div>
 
           <div className="flex items-center gap-1">

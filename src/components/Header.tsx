@@ -61,6 +61,17 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="mx-auto md:mx-0 flex items-center gap-2 text-xs font-medium tracking-wide whitespace-nowrap">
           <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse shrink-0" />
           <span>REVERIE NAIL STUDIO • West Wickham</span>
+          <span className="text-amber-300/50 hidden sm:inline">|</span>
+          <a
+            href="https://dinhhienmarketing-ar9r.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1 text-amber-200 hover:text-amber-100 font-normal hover:underline transition-colors"
+            title="Dịch vụ Marketing Tiệm Nail & Spa chuyên nghiệp - Đình Hiển Marketing"
+          >
+            <span>Dịch vụ Marketing Tiệm Nail & Spa • Đình Hiển Marketing</span>
+            <ExternalLink className="w-2.5 h-2.5 text-amber-300/80" />
+          </a>
         </div>
 
         <div className="hidden lg:flex items-center space-x-3 text-xs">
@@ -181,6 +192,18 @@ export const Header: React.FC<HeaderProps> = ({
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
               <span>Call {SALON_INFO.phone}</span>
             </a>
+
+            <div className="pt-2 border-t border-[#E8DFD1]/70 text-center">
+              <a
+                href="https://dinhhienmarketing-ar9r.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[11px] text-[#8C7355] hover:text-[#4A3B2C] font-medium"
+              >
+                <span>Dịch vụ Marketing Tiệm Nail & Spa • Đình Hiển Marketing</span>
+                <ExternalLink className="w-3 h-3 text-[#8C7355]" />
+              </a>
+            </div>
           </div>
         </div>
       )}
