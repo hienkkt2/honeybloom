@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+:root {
+  --plaster: #DBD3C9;
+  --porcelain: #F2EEE8;
+  --stone: #A99C90;
+  --ink: #332C26;
+  --glow: #E3A868;
+  --brass: #9F8355;
+}

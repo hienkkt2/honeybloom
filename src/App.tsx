@@ -6,11 +6,13 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { RecentWork } from './components/RecentWork';
+import { TheStudio } from './components/TheStudio';
 import { ServiceMenu } from './components/ServiceMenu';
-import { Gallery } from './components/Gallery';
-import { FAQSection } from './components/FAQSection';
 import { Philosophy } from './components/Philosophy';
+import { SalonPolicy } from './components/SalonPolicy';
 import { Reviews } from './components/Reviews';
+import { FAQSection } from './components/FAQSection';
 import { LocationContact } from './components/LocationContact';
 import { Footer } from './components/Footer';
 import { BookingModal } from './components/BookingModal';
@@ -108,7 +110,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#3D2E1E] font-sans antialiased selection:bg-amber-200 selection:text-amber-900">
+    <div className="min-h-screen bg-[#DBD3C9] text-[#332C26] font-sans antialiased selection:bg-[#E3A868] selection:text-[#332C26]">
       {/* Sticky Header Navbar */}
       <Header
         onOpenBooking={handleOpenBooking}
@@ -122,29 +124,35 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* Hero Section */}
+        {/* 1. Hero Section */}
         <Hero
           onOpenBooking={handleOpenBooking}
           onNavigateTo={handleNavigateTo}
         />
 
-        {/* Service Menu & Price List (Strictly matching the 2 image price sheets) */}
+        {/* 2. Recent Work Section */}
+        <RecentWork />
+
+        {/* 3. The Studio Section */}
+        <TheStudio />
+
+        {/* 4. Service Menu (Featured 4 Cards & View Full Menu Link) */}
         <ServiceMenu onOpenBooking={handleOpenBooking} />
 
-        {/* Nail Artistry Lookbook Gallery */}
-        <Gallery onOpenBooking={handleOpenBooking} />
+        {/* 5. Why Reverie (4 Promises) */}
+        <Philosophy />
 
-        {/* Frequently Asked Questions */}
-        <FAQSection />
-
-        {/* Our Story & Philosophy */}
-        <Philosophy onOpenBooking={() => handleOpenBooking()} />
-
-        {/* Client Reviews */}
+        {/* 6. Client Reviews (4.9 Rating) */}
         <Reviews />
 
-        {/* Location, Interactive Google Maps & Contact */}
+        {/* 7. Frequently Asked Questions */}
+        <FAQSection />
+
+        {/* 8. Visit, Opening Hours & Location Map */}
         <LocationContact />
+
+        {/* 9. Salon Policy & Standards (Right below Google Map) */}
+        <SalonPolicy />
       </main>
 
       {/* Footer */}

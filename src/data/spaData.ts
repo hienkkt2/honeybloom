@@ -4,8 +4,8 @@ export const FRESHA_BOOKING_URL = 'https://www.fresha.com/en-GB/a/reverie-nail-s
 export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/2TzY5SyqYPgQvU237';
 export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61589489720653';
 export const INSTAGRAM_URL = 'https://www.instagram.com/reverie.nail.studio';
-export const SALON_PHONE = '+20 3 1436868';
-export const SALON_PHONE_TEL = 'tel:+2031436868';
+export const SALON_PHONE = '020 3143 6868';
+export const SALON_PHONE_TEL = 'tel:02031436868';
 
 export const SALON_INFO = {
   name: 'REVERIE NAIL STUDIO',
@@ -17,14 +17,154 @@ export const SALON_INFO = {
   facebookUrl: FACEBOOK_URL,
   googleMapsUrl: GOOGLE_MAPS_URL,
   freshaUrl: FRESHA_BOOKING_URL,
+  rating: '4.9',
+  ratingLabel: '4.9 ⭐ Google',
+  openingHours: [
+    { days: 'Monday – Saturday', hours: '09:30 – 18:30' },
+    { days: 'Sunday', hours: '10:00 – 17:00' },
+  ]
 };
+
+export const SALON_POLICIES = [
+  {
+    id: 'guarantee',
+    title: '7-Day Quality Guarantee',
+    short: 'Complimentary repairs',
+    description: 'We stand firmly behind our artistry. If any chipping, lifting, or breakage occurs within 7 days of your treatment, contact us or visit the studio and we will repair it free of charge.',
+  },
+  {
+    id: 'cancellation',
+    title: 'Bookings & Cancellations',
+    short: '24-hour advance notice',
+    description: 'We welcome bookings via Fresha and walk-ins when space allows. If you need to reschedule or cancel your appointment, please let us know at least 24 hours in advance.',
+  },
+  {
+    id: 'punctuality',
+    title: 'Arrivals & Punctuality',
+    short: '5 minutes early',
+    description: 'Please arrive 5 minutes before your scheduled appointment time. To maintain our relaxing atmosphere and respect subsequent guests, arrivals over 15 minutes late may require a modified service.',
+  },
+  {
+    id: 'hygiene',
+    title: 'Hospital-Grade Hygiene',
+    short: 'Strict sanitisation',
+    description: 'Every metal instrument is sealed and medical-grade autoclaved between appointments. Files, buffers, and pedicure tub liners are strictly single-use.',
+  },
+  {
+    id: 'natural-health',
+    title: 'Natural Nail Health',
+    short: 'Gentle, safe care',
+    description: 'We prioritise the integrity of your natural nail bed. We use gentle soak-off techniques, HEMA & TPO-free quality gels, and never aggressively file the natural plate.',
+  },
+  {
+    id: 'consultation',
+    title: 'Consultation & Refreshments',
+    short: 'Tailored for you',
+    description: 'Complimentary herbal teas, fresh coffee, and sweets are offered during your visit. Please inform our technicians if you have any allergies or sensitive skin conditions.',
+  },
+];
+
+export const STUDIO_SLIDES = [
+  {
+    id: 'slide-1',
+    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1200',
+    title: 'The Main Studio Floor',
+    subtitle: 'Warm lighting, botanical touches, and calm acoustic atmosphere',
+    tag: '133 High Street',
+  },
+  {
+    id: 'slide-2',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=1200',
+    title: 'Bespoke Nail Artistry Stations',
+    subtitle: 'Equipped with medical-grade ventilation and ergonomic seating',
+    tag: 'BIAB & Acrylics',
+  },
+  {
+    id: 'slide-3',
+    image: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=1200',
+    title: 'Pedicure & Hot Stone Sanctuary',
+    subtitle: 'Plush armchairs with soothing foot baths and complimentary treats',
+    tag: 'Relaxation Area',
+  },
+  {
+    id: 'slide-4',
+    image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=1200',
+    title: 'Complimentary Refreshment Bar',
+    subtitle: 'Selection of fresh coffee, organic herbal teas, and artisan sweets',
+    tag: 'Guest Comfort',
+  },
+  {
+    id: 'slide-5',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=1200',
+    title: 'Sterilisation & Hygiene Suite',
+    subtitle: 'Hospital-grade autoclaved instruments and single-use buffers',
+    tag: 'Hospital-Grade',
+  },
+];
 
 export const HERO_IMAGES = {
   hero: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=1200',
   nails1: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800',
   nails2: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=800',
-  interior: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800'
+  interior: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800',
+  studio1: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800',
+  studio2: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800',
+  studio3: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&q=80&w=800',
 };
+
+export const FEATURED_MENU_CARDS = [
+  {
+    id: 'gel-manicure',
+    title: 'Gel Manicure',
+    price: 'from £33',
+    description: 'Full cuticle care, shaping, gel polish, hand massage and hot towel.',
+    duration: '45 mins',
+  },
+  {
+    id: 'gel-pedicure',
+    title: 'Gel Pedicure',
+    price: 'from £38',
+    description: 'Callus removal, exfoliation, hot towel wrap and hot stone massage.',
+    duration: '50 mins',
+  },
+  {
+    id: 'biab-overlay',
+    title: 'BIAB Overlay',
+    price: 'from £35',
+    description: 'Builder gel over your natural nails for added strength and structure.',
+    duration: '50 mins',
+  },
+  {
+    id: 'acrylic-extensions',
+    title: 'Acrylic Extensions with Gel Colour',
+    price: 'from £38',
+    description: 'Sculpted to your desired length and shape, finished with gel colour.',
+    duration: '60 mins',
+  },
+];
+
+export const WHY_REVERIE_ITEMS = [
+  {
+    id: 'why-1',
+    title: 'Seven-day guarantee',
+    description: 'If anything happens to your gel or extensions in the first week, come back and we’ll fix it free of charge.',
+  },
+  {
+    id: 'why-2',
+    title: 'A drink while you’re here',
+    description: 'Tea, coffee, something cold, and a biscuit or sweet.',
+  },
+  {
+    id: 'why-3',
+    title: 'Products worth the price',
+    description: 'Gel colour that’s HEMA and TPO free, Aesop at the basin, L’Occitane at the table.',
+  },
+  {
+    id: 'why-4',
+    title: 'Clean tools, every client',
+    description: 'Tools are disinfected between every appointment.',
+  },
+];
 
 export const SERVICES: ServiceItem[] = [
   // MANICURE & PEDICURE
@@ -573,45 +713,39 @@ export const GIFT_VOUCHERS = [
 export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'How do I book an appointment?',
-    answer: 'You can easily book online 24/7 by clicking "Book your session now" to open our official Fresha booking page, or you can call us directly at +20 3 1436868.',
+    question: 'How do I book?',
+    answer: 'Online through Fresha any time, by phone on 020 3143 6868, or send us a message on Instagram or Facebook.',
     category: 'booking'
   },
   {
     id: 'faq-2',
-    question: 'Where is Reverie Nail Studio located?',
-    answer: 'We are located at 133 High Street, West Wickham, BR4 0LU, United Kingdom. You can find us right on the high street with convenient parking and transport links.',
-    category: 'location'
+    question: 'Can you recreate a design from a photo?',
+    answer: 'Yes. Send us your inspiration when you book, or bring it with you, and we’ll let you know what’s possible and how much time we’ll need. Nail art starts from £5.',
+    category: 'nail-art'
   },
   {
     id: 'faq-3',
-    question: 'What is Dipping Powder and how does it work?',
-    answer: 'Dipping Powder is an innovative, lightweight technique that adds exceptional strength and durability to your natural nails or extensions with vibrant colour that lasts for weeks.',
-    category: 'nail-care'
+    question: 'How long will my appointment take?',
+    answer: 'A gel manicure takes around 45 minutes and a gel pedicure around 50. Extensions, ombré and detailed nail art take longer, so allow extra time if you’re booking those.',
+    category: 'timing'
   },
   {
     id: 'faq-4',
-    question: 'How often should I get an Acrylic or Ombré Infill?',
-    answer: 'We recommend booking an acrylic or ombré infill every 2 to 3 weeks to address natural regrowth, rebalance the structure, and keep your manicure looking flawless.',
-    category: 'nail-care'
+    question: 'How long does BIAB last?',
+    answer: 'Up to three weeks, then most clients come back for an infill.',
+    category: 'biab'
   },
   {
     id: 'faq-5',
-    question: 'Do you accept walk-in appointments?',
-    answer: 'Yes, walk-ins are warmly welcome subject to daily technician availability! To secure your preferred time slot, booking via Fresha is highly recommended.',
-    category: 'booking'
+    question: 'What if a nail chips or lifts?',
+    answer: 'Get in touch and come back in. Anything that happens in the first week is fixed free of charge, and please don’t pick at it, as that takes layers of your natural nail with it.',
+    category: 'guarantee'
   },
   {
     id: 'faq-6',
-    question: 'Can you fix a broken or chipped nail?',
-    answer: 'Yes! We offer dedicated nail repair service (£5) to restore cracked, chipped, or broken nails so your full set remains strong and uniform.',
-    category: 'nail-care'
-  },
-  {
-    id: 'faq-7',
-    question: 'How does professional enhancement removal work?',
-    answer: 'Our professional removal service (from £10) gently and safely removes gel polish or acrylic extensions while protecting your natural nails from damage.',
-    category: 'nail-care'
+    question: 'What if I need to cancel?',
+    answer: 'Please let us know at least 12 hours before your appointment time.',
+    category: 'policy'
   }
 ];
 

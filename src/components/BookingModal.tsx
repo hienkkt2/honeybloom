@@ -90,7 +90,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   const handleConfirmBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    const randomRef = 'HNB-' + Math.floor(100000 + Math.random() * 900000);
+    const randomRef = 'REV-' + Math.floor(100000 + Math.random() * 900000);
     setBookingRef(randomRef);
     setIsConfirmed(true);
 
@@ -100,7 +100,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       clientEmail: clientEmail || 'guest@example.com',
       clientPhone: clientPhone || '+44 7000 000000',
       serviceNames: selectedServices.map((s) => s.name),
-      therapistName: THERAPISTS.find((t) => t.id === therapistId)?.name || 'Donna (Founder)',
+      therapistName: THERAPISTS.find((t) => t.id === therapistId)?.name || 'Reverie Specialist',
       date: selectedDate,
       timeSlot: selectedTimeSlot,
       teaPreference,
@@ -117,24 +117,24 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
-      <div className="bg-[#FAF7F2] w-full max-w-3xl rounded-3xl border border-[#E8DFD1] shadow-2xl relative my-auto overflow-hidden animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-[#332C26]/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="bg-[#F2EEE8] w-full max-w-3xl rounded-3xl border border-[#A99C90]/30 shadow-2xl relative my-auto overflow-hidden animate-in zoom-in-95 duration-200">
         
         {/* Modal Header */}
-        <div className="bg-[#4A3B2C] text-[#F9F5EF] p-5 sm:p-6 flex items-center justify-between border-b border-[#32271C]">
+        <div className="bg-[#332C26] text-[#F2EEE8] p-5 sm:p-6 flex items-center justify-between border-b border-[#A99C90]/30">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-amber-200/20 flex items-center justify-center text-amber-300 font-serif font-bold text-lg">
-              H&B
+            <div className="w-10 h-10 rounded-full bg-[#DBD3C9]/20 flex items-center justify-center text-[#E3A868] font-serif font-bold text-lg border border-[#A99C90]/30">
+              R
             </div>
             <div>
-              <span className="text-[10px] text-amber-200 uppercase tracking-widest block">Online Sanctuary Concierge</span>
-              <h2 className="font-serif text-xl sm:text-2xl font-light">Book Your Ritual Experience</h2>
+              <span className="text-[10px] text-[#E3A868] uppercase tracking-widest block font-semibold">Boutique Appointment</span>
+              <h2 className="font-serif text-xl sm:text-2xl font-normal">Reverie Nail Studio</h2>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-amber-200 hover:text-white hover:bg-white/10 transition-colors"
+            className="p-2 rounded-full text-[#DBD3C9] hover:text-[#F2EEE8] hover:bg-white/10 transition-colors"
           >
             <X className="w-6 h-6" />
           </button>
@@ -142,14 +142,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
         {/* Stepper Progress Bar */}
         {!isConfirmed && (
-          <div className="bg-[#EADCC9]/50 border-b border-[#E8DFD1] px-6 py-3 flex items-center justify-between text-xs font-semibold text-[#6E5A44]">
-            <span className={step >= 1 ? 'text-[#3D2E1E] font-bold' : ''}>1. Rituals ({selectedServices.length})</span>
+          <div className="bg-[#DBD3C9] border-b border-[#A99C90]/30 px-6 py-3 flex items-center justify-between text-xs font-semibold text-[#5C5046]">
+            <span className={step >= 1 ? 'text-[#332C26] font-bold' : ''}>1. Treatments ({selectedServices.length})</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-40" />
-            <span className={step >= 2 ? 'text-[#3D2E1E] font-bold' : ''}>2. Date & Therapist</span>
+            <span className={step >= 2 ? 'text-[#332C26] font-bold' : ''}>2. Date & Time</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-40" />
-            <span className={step >= 3 ? 'text-[#3D2E1E] font-bold' : ''}>3. Personalization</span>
+            <span className={step >= 3 ? 'text-[#332C26] font-bold' : ''}>3. Personalisation</span>
             <ChevronRight className="w-3.5 h-3.5 opacity-40" />
-            <span className={step >= 4 ? 'text-[#3D2E1E] font-bold' : ''}>4. Details & Confirm</span>
+            <span className={step >= 4 ? 'text-[#332C26] font-bold' : ''}>4. Details & Confirm</span>
           </div>
         )}
 

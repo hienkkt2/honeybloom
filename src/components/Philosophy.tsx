@@ -1,118 +1,64 @@
 import React from 'react';
-import { Heart, Sparkles, CheckCircle2, Shield, ExternalLink } from 'lucide-react';
-import { HERO_IMAGES, FRESHA_BOOKING_URL } from '../data/spaData';
+import { ShieldCheck, Coffee, Sparkles, Droplets } from 'lucide-react';
+import { WHY_REVERIE_ITEMS } from '../data/spaData';
 
-interface PhilosophyProps {
-  onOpenBooking: () => void;
-}
+const ICONS = [
+  ShieldCheck,
+  Coffee,
+  Sparkles,
+  Droplets,
+];
 
-export const Philosophy: React.FC<PhilosophyProps> = () => {
+export const Philosophy: React.FC = () => {
   return (
-    <section id="philosophy" className="py-20 bg-[#F5EBE0] relative">
+    <section id="why-reverie" className="py-16 sm:py-24 bg-[#DBD3C9] relative border-b border-[#A99C90]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Image Showcase */}
-          <div className="lg:col-span-5 order-2 lg:order-1 relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden shadow-md aspect-3/4 bg-[#EADCC9]">
-                  <img
-                    src={HERO_IMAGES.nails1}
-                    alt="Reverie Nail Art & BIAB"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#E8DFD1] text-center shadow-2xs">
-                  <span className="block text-xl font-serif font-bold text-[#4A3B2C]">BIAB & Gel</span>
-                  <span className="text-xs text-[#7A644D] uppercase tracking-wider font-medium">Long-Lasting Strength</span>
-                </div>
-              </div>
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16 space-y-3">
+          <span className="text-[11px] uppercase font-bold tracking-[0.2em] text-[#736557] block">
+            The Reverie Standard
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#332C26] font-normal leading-tight">
+            Why Reverie
+          </h2>
+          <p className="text-sm sm:text-base text-[#5C5046] font-normal max-w-xl mx-auto">
+            We believe high street nail care should feel thoughtful, hygienic, and genuinely relaxing from start to finish.
+          </p>
+        </div>
 
-              <div className="space-y-4 pt-8">
-                <div className="bg-[#FAF7F2] p-4 rounded-2xl border border-[#E8DFD1] text-center shadow-2xs">
-                  <span className="block text-xl font-serif font-bold text-[#8C7355]">West Wickham</span>
-                  <span className="text-xs text-[#7A644D] uppercase tracking-wider font-medium">133 High Street</span>
-                </div>
-                <div className="rounded-2xl overflow-hidden shadow-md aspect-3/4 bg-[#EADCC9]">
-                  <img
-                    src={HERO_IMAGES.interior}
-                    alt="Reverie Nail Studio Interior"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Narrative Content */}
-          <div className="lg:col-span-7 order-1 lg:order-2 space-y-6">
-            
-            <div className="inline-flex items-center gap-2 text-[#8C7355] text-xs font-semibold tracking-widest uppercase">
-              <Sparkles className="w-4 h-4 text-amber-700" />
-              <span>About Reverie Nail Studio</span>
-            </div>
-
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2015] font-light leading-snug">
-              Exceptional Nail Artistry, BIAB Care & Relaxing Pedicures
-            </h2>
-
-            <p className="text-base text-[#5A4836] leading-relaxed font-light">
-              At <strong className="font-semibold text-[#3D2E1E]">Reverie Nail Studio</strong> on West Wickham High Street, we are dedicated to providing immaculate nail care, healthy BIAB overlays, stylish acrylic extensions, ombré finishes, and soothing pedicures with hot stone massage.
-            </p>
-
-            {/* Our Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD1]">
-                <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs font-bold text-[#3D2E1E] uppercase tracking-wider">Flawless BIAB</h4>
-                  <p className="text-xs text-[#7A644D]">Apex architecture to grow strong natural nails.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD1]">
-                <Heart className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs font-bold text-[#3D2E1E] uppercase tracking-wider">Hot Stone Pedicures</h4>
-                  <p className="text-xs text-[#7A644D]">Callus grooming & soothing hot stone wraps.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD1]">
-                <Sparkles className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs font-bold text-[#3D2E1E] uppercase tracking-wider">Custom Ombré & Art</h4>
-                  <p className="text-xs text-[#7A644D]">Baby boomer ombré, chrome & French tips.</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#FAF7F2] border border-[#E8DFD1]">
-                <Shield className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs font-bold text-[#3D2E1E] uppercase tracking-wider">Strict Hygiene</h4>
-                  <p className="text-xs text-[#7A644D]">Hospital-grade sanitation & single-use files.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <a
-                href={FRESHA_BOOKING_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-7 py-3 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm"
+        {/* 4 Pillars Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {WHY_REVERIE_ITEMS.map((item, index) => {
+            const IconComponent = ICONS[index] || Sparkles;
+            return (
+              <div
+                key={item.id}
+                className="bg-[#F2EEE8] p-6 sm:p-7 rounded-2xl border border-[#A99C90]/30 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between space-y-4"
               >
-                <span>Book your session now</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
-            </div>
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#DBD3C9] flex items-center justify-center text-[#332C26]">
+                    <IconComponent className="w-5 h-5 text-[#E3A868]" />
+                  </div>
 
-          </div>
+                  <h3 className="font-serif text-lg sm:text-xl font-medium text-[#332C26] leading-snug">
+                    {item.title}
+                  </h3>
 
+                  <p className="text-xs sm:text-sm text-[#5C5046] leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-[#A99C90]/20 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#E3A868]" />
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-[#736557]">
+                    Included Always
+                  </span>
+                </div>
+              </div>
+            );
+          })}
         </div>
 
       </div>

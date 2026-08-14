@@ -80,7 +80,7 @@ export interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  category: 'booking' | 'head-spa' | 'nail-care' | 'location';
+  category?: string;
 }
 
 export interface CartItem {
