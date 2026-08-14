@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Search, Calendar, Sparkles, Clock, Check, Info, Filter, ArrowUpRight } from 'lucide-react';
-import { SERVICES } from '../data/spaData';
+import { Search, Sparkles, Clock, Check, Info, Filter, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { SERVICES, FRESHA_BOOKING_URL } from '../data/spaData';
 import { ServiceCategory, ServiceItem } from '../types';
 
 interface ServiceMenuProps {
@@ -13,12 +13,12 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
   const [selectedServiceDetail, setSelectedServiceDetail] = useState<ServiceItem | null>(null);
 
   const categories: { id: ServiceCategory | 'all'; label: string }[] = [
-    { id: 'all', label: 'All Rituals' },
-    { id: 'head-spa', label: 'Head Spa Rituals' },
-    { id: 'manicure', label: 'Clean Manicures' },
-    { id: 'pedicure', label: 'Organic Pedicures' },
-    { id: 'packages', label: 'Sanctuary Packages' },
-    { id: 'add-ons', label: 'Nail Art & Add-ons' },
+    { id: 'all', label: 'All Services' },
+    { id: 'manicure-pedicure', label: 'Mani & Pedi' },
+    { id: 'biab', label: 'BIAB' },
+    { id: 'extensions', label: 'Nail Extensions' },
+    { id: 'dipping-powder', label: 'Dipping Powder' },
+    { id: 'add-ons', label: 'Add-ons' },
   ];
 
   const filteredServices = SERVICES.filter((service) => {
@@ -30,6 +30,23 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
     return matchesCategory && matchesSearch;
   });
 
+  const getCategoryBadgeLabel = (cat: ServiceCategory) => {
+    switch (cat) {
+      case 'manicure-pedicure':
+        return 'Manicure & Pedicure';
+      case 'biab':
+        return 'BIAB (Builder In A Bottle)';
+      case 'extensions':
+        return 'Nail Extensions';
+      case 'dipping-powder':
+        return 'Dipping Powder';
+      case 'add-ons':
+        return 'Add-ons & Removals';
+      default:
+        return cat;
+    }
+  };
+
   return (
     <section id="services" className="py-20 bg-[#F5EBE0] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,13 +55,13 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
           <div className="inline-flex items-center gap-2 text-[#8C7355] text-xs font-semibold tracking-widest uppercase bg-[#EADCC9]/80 px-4 py-1.5 rounded-full border border-[#CBB292]">
             <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-            <span>Honest & Transparent Price List</span>
+            <span>Official Salon Price List</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#2C2015] font-light">
-            Sanctuary Menu & Price List
+            Service Menu & Pricing
           </h2>
           <p className="text-sm text-[#6E5A44] font-light">
-            All prices in GBP (£). Every service includes complimentary organic tea service, digital hair/scalp consultation, and custom botanical care.
+            Transparent pricing at Reverie Nail Studio (133 High Street, West Wickham). Book directly on Fresha for instant confirmation.
           </p>
         </div>
 
@@ -78,7 +95,7 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search rituals, BIAB, Halo..."
+              placeholder="Search BIAB, Ombré, Gel..."
               className="w-full bg-[#FAF7F2] border border-[#E8DFD1] rounded-xl pl-9 pr-4 py-2 text-xs text-[#3D2E1E] focus:outline-none focus:border-[#8C7355] placeholder-[#A08C75]"
             />
           </div>
@@ -94,16 +111,23 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
             >
               {/* Top Row Badge & Popular Tag */}
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
                   <span className="text-[10px] font-bold uppercase tracking-widest bg-[#EADCC9] text-[#5A4836] px-3 py-1 rounded-full">
-                    {service.category.replace('-', ' ')}
+                    {getCategoryBadgeLabel(service.category)}
                   </span>
-                  {service.popular && (
-                    <span className="text-[10px] font-bold uppercase tracking-widest bg-amber-100 text-amber-900 px-3 py-1 rounded-full border border-amber-300/50 flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-amber-600" />
-                      Most Popular
-                    </span>
-                  )}
+                  <div className="flex items-center gap-1.5">
+                    {service.discountBadge && (
+                      <span className="text-[10px] font-bold uppercase tracking-widest bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full border border-emerald-300">
+                        {service.discountBadge}
+                      </span>
+                    )}
+                    {service.popular && (
+                      <span className="text-[10px] font-bold uppercase tracking-widest bg-amber-100 text-amber-900 px-2.5 py-1 rounded-full border border-amber-300/50 flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-amber-600" />
+                        Popular
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Service Title & Tagline */}
@@ -111,27 +135,32 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
                   <h3 className="font-serif text-xl font-medium text-[#2C2015] group-hover:text-[#8C7355] transition-colors">
                     {service.name}
                   </h3>
-                  <p className="text-xs text-[#7A644D] mt-1 line-clamp-2">
+                  <p className="text-xs text-[#7A644D] mt-1 leading-relaxed">
                     {service.tagline}
                   </p>
                 </div>
 
-                {/* Duration & Price Banner */}
+                {/* Price & Duration Banner */}
                 <div className="flex items-center justify-between py-2 border-y border-[#E8DFD1]/60">
-                  <div className="flex items-center gap-1.5 text-xs text-[#6E5A44]">
-                    <Clock className="w-3.5 h-3.5 text-[#8C7355]" />
-                    <span>{service.durationMinutes} Minutes</span>
+                  <div className="flex items-center gap-1.5 text-xs text-[#8C7355] font-medium">
+                    <Clock className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span>{service.durationDisplay || `${service.durationMinutes} mins`}</span>
                   </div>
-                  <div className="text-right">
-                    <span className="text-lg font-serif font-bold text-[#3D2E1E]">
-                      £{service.priceGBP} GBP
+                  <div className="text-right flex items-baseline gap-2">
+                    {service.originalPriceDisplay && (
+                      <span className="text-xs text-[#A08C75] line-through">
+                        {service.originalPriceDisplay}
+                      </span>
+                    )}
+                    <span className="text-xl font-serif font-bold text-[#3D2E1E]">
+                      {service.priceDisplay || (typeof service.priceGBP === 'number' ? `£${service.priceGBP}` : service.priceGBP)}
                     </span>
                   </div>
                 </div>
 
                 {/* Highlights preview */}
                 <ul className="space-y-1.5 pt-1">
-                  {service.highlights.slice(0, 3).map((h, i) => (
+                  {service.highlights.map((h, i) => (
                     <li key={i} className="text-xs text-[#5A4836] flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5" />
                       <span>{h}</span>
@@ -145,19 +174,21 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
                 <button
                   onClick={() => setSelectedServiceDetail(service)}
                   className="p-2.5 rounded-xl border border-[#E8DFD1] text-[#6E5A44] hover:bg-[#EADCC9]/50 transition-colors text-xs font-medium flex items-center gap-1"
-                  title="View full detail & protocol"
+                  title="View full details"
                 >
                   <Info className="w-4 h-4 text-[#8C7355]" />
                   <span className="hidden sm:inline">Details</span>
                 </button>
 
-                <button
-                  onClick={() => onOpenBooking(service.id)}
+                <a
+                  href={FRESHA_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex-1 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] py-2.5 px-4 rounded-xl text-xs font-medium tracking-wider uppercase transition-all shadow-2xs flex items-center justify-center gap-2"
                 >
-                  <Calendar className="w-3.5 h-3.5 text-amber-300" />
-                  <span>Book Ritual</span>
-                </button>
+                  <span>Book your session now</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
+                </a>
               </div>
 
             </div>
@@ -167,7 +198,7 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
         {filteredServices.length === 0 && (
           <div className="text-center py-16 bg-[#FAF7F2] rounded-3xl border border-[#E8DFD1]">
             <Filter className="w-8 h-8 text-[#8C7355] mx-auto mb-3" />
-            <p className="text-sm font-semibold text-[#3D2E1E]">No rituals match your search filter</p>
+            <p className="text-sm font-semibold text-[#3D2E1E]">No services match your search filter</p>
             <p className="text-xs text-[#7A644D] mt-1">Try clearing your search query or selecting another category.</p>
             <button
               onClick={() => {
@@ -191,7 +222,7 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
             <div className="flex items-start justify-between border-b border-[#E8DFD1] pb-4">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-widest bg-[#EADCC9] text-[#5A4836] px-3 py-1 rounded-full">
-                  {selectedServiceDetail.category.replace('-', ' ')}
+                  {getCategoryBadgeLabel(selectedServiceDetail.category)}
                 </span>
                 <h3 className="font-serif text-2xl font-semibold text-[#2C2015] mt-2">
                   {selectedServiceDetail.name}
@@ -210,7 +241,7 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
             </p>
 
             <div className="bg-[#F5EBE0] p-4 rounded-2xl border border-[#E8DFD1] space-y-2">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#3D2E1E]">Key Ritual Protocol:</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#3D2E1E]">Service Highlights:</h4>
               <ul className="space-y-1.5 text-xs text-[#6E5A44]">
                 {selectedServiceDetail.highlights.map((h, idx) => (
                   <li key={idx} className="flex items-start gap-2">
@@ -221,28 +252,32 @@ export const ServiceMenu: React.FC<ServiceMenuProps> = ({ onOpenBooking }) => {
               </ul>
             </div>
 
-            {selectedServiceDetail.recommendedFor && (
-              <div className="text-xs text-[#7A644D]">
-                <strong className="text-[#3D2E1E]">Recommended for:</strong> {selectedServiceDetail.recommendedFor}
-              </div>
-            )}
-
             <div className="pt-4 border-t border-[#E8DFD1] flex items-center justify-between">
               <div>
-                <span className="text-xs text-[#7A644D]">{selectedServiceDetail.durationMinutes} Minutes Session</span>
-                <p className="text-2xl font-serif font-bold text-[#3D2E1E]">£{selectedServiceDetail.priceGBP} GBP</p>
+                <span className="text-xs text-[#7A644D] uppercase font-bold tracking-wider block">
+                  {selectedServiceDetail.durationDisplay || `${selectedServiceDetail.durationMinutes} mins`}
+                </span>
+                <div className="flex items-baseline gap-2">
+                  {selectedServiceDetail.originalPriceDisplay && (
+                    <span className="text-sm text-[#A08C75] line-through">
+                      {selectedServiceDetail.originalPriceDisplay}
+                    </span>
+                  )}
+                  <p className="text-2xl font-serif font-bold text-[#3D2E1E]">
+                    {selectedServiceDetail.priceDisplay || (typeof selectedServiceDetail.priceGBP === 'number' ? `£${selectedServiceDetail.priceGBP}` : selectedServiceDetail.priceGBP)}
+                  </p>
+                </div>
               </div>
 
-              <button
-                onClick={() => {
-                  const id = selectedServiceDetail.id;
-                  setSelectedServiceDetail(null);
-                  onOpenBooking(id);
-                }}
-                className="bg-[#4A3B2C] text-[#F9F5EF] px-6 py-3 rounded-full text-xs font-medium tracking-widest uppercase shadow-md hover:bg-[#32271C]"
+              <a
+                href={FRESHA_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#4A3B2C] text-[#F9F5EF] px-6 py-3 rounded-full text-xs font-medium tracking-widest uppercase shadow-md hover:bg-[#32271C] flex items-center gap-2"
               >
-                Book This Ritual
-              </button>
+                <span>Book your session now</span>
+                <ExternalLink className="w-3.5 h-3.5 text-amber-300" />
+              </a>
             </div>
 
           </div>

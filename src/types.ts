@@ -1,11 +1,15 @@
-export type ServiceCategory = 'head-spa' | 'manicure' | 'pedicure' | 'packages' | 'add-ons';
+export type ServiceCategory = 'manicure-pedicure' | 'biab' | 'extensions' | 'dipping-powder' | 'add-ons' | 'all';
 
 export interface ServiceItem {
   id: string;
   name: string;
   category: ServiceCategory;
-  durationMinutes: number;
-  priceGBP: number;
+  durationMinutes?: number;
+  durationDisplay?: string;
+  priceGBP: number | string;
+  priceDisplay?: string;
+  originalPriceDisplay?: string;
+  discountBadge?: string;
   tagline: string;
   description: string;
   highlights: string[];
@@ -17,32 +21,47 @@ export interface ServiceItem {
 export interface Therapist {
   id: string;
   name: string;
-  role: string;
+  role?: string;
+  title?: string;
   bio: string;
   specialties: string[];
-  avatar: string;
+  avatar?: string;
+  image?: string;
+  experienceYears?: number;
   rating: number;
 }
 
 export interface Product {
   id: string;
   name: string;
+  tagline?: string;
   category: 'scalp-care' | 'nail-care' | 'wellness-tea' | 'tools';
   priceGBP: number;
+  rating?: number;
+  reviewCount?: number;
   volume: string;
   description: string;
   image: string;
+  benefits?: string[];
   ingredients?: string[];
-  inStock: boolean;
+  inStock?: boolean;
+  stockCount?: number;
+  isBestSeller?: boolean;
 }
 
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'nail-art' | 'head-spa' | 'sanctuary' | 'pedicure';
+  category: string;
+  categoryLabel?: string;
   image: string;
   description: string;
   serviceIdToBook?: string;
+  duration?: string;
+  price?: string;
+  originalPrice?: string;
+  badge?: string;
+  highlights?: string[];
 }
 
 export interface Review {
@@ -53,6 +72,8 @@ export interface Review {
   service: string;
   comment: string;
   verified: boolean;
+  badge?: string;
+  source?: string;
 }
 
 export interface FAQItem {

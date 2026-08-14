@@ -64,8 +64,11 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
   // Calculate Totals
   const selectedServices = SERVICES.filter((s) => selectedServiceIds.includes(s.id));
-  const subtotalGBP = selectedServices.reduce((sum, s) => sum + s.priceGBP, 0);
-  const totalDuration = selectedServices.reduce((sum, s) => sum + s.durationMinutes, 0);
+  const subtotalGBP = selectedServices.reduce((sum, s) => {
+    const p = typeof s.priceGBP === 'number' ? s.priceGBP : parseFloat(String(s.priceGBP).replace(/[^0-9.]/g, '')) || 0;
+    return sum + p;
+  }, 0);
+  const totalDuration = selectedServices.reduce((sum, s) => sum + (s.durationMinutes || 30), 0);
 
   const availableDates = [
     { label: 'Thu, Aug 13', value: '2026-08-13' },
@@ -173,7 +176,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               {/* Digital Pass Voucher Card */}
               <div className="bg-[#F5EBE0] border-2 border-dashed border-[#CBB292] p-6 rounded-3xl text-left max-w-md mx-auto space-y-4 shadow-sm relative">
                 <div className="flex justify-between items-center border-b border-[#E8DFD1] pb-3">
-                  <span className="font-serif text-lg font-bold text-[#3D2E1E]">Honey & Bloom</span>
+                  <span className="font-serif text-lg font-bold text-[#3D2E1E]">Reverie Nail Studio</span>
                   <span className="font-mono text-xs font-bold text-amber-900 bg-amber-200/80 px-2.5 py-1 rounded-md">
                     REF: {bookingRef}
                   </span>
@@ -187,13 +190,13 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   <div>
                     <span className="text-[#8C7355] block">Specialist</span>
                     <strong className="text-[#3D2E1E]">
-                      {THERAPISTS.find((t) => t.id === therapistId)?.name || 'Donna'}
+                      {THERAPISTS.find((t) => t.id === therapistId)?.name || 'Reverie Technician'}
                     </strong>
                   </div>
                 </div>
 
                 <div className="text-xs border-t border-[#E8DFD1] pt-3 space-y-1">
-                  <span className="text-[#8C7355] block">Selected Rituals ({totalDuration} mins)</span>
+                  <span className="text-[#8C7355] block">Selected Services</span>
                   {selectedServices.map((s) => (
                     <div key={s.id} className="flex justify-between font-medium text-[#3D2E1E]">
                       <span>{s.name}</span>
@@ -208,7 +211,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                 <div className="text-[11px] text-[#7A644D] flex items-center gap-1.5 pt-2">
                   <MapPin className="w-3.5 h-3.5 text-[#8C7355] shrink-0" />
-                  <span>55 Royal Crest Avenue, Royal Docks, London E16 2EB</span>
+                  <span>133 High Street, West Wickham, BR4 0LU</span>
                 </div>
               </div>
 
@@ -302,9 +305,6 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                           <div className="space-y-1">
                             <div className="flex items-center gap-2">
                               <span className="font-serif text-base font-semibold text-[#2C2015]">{s.name}</span>
-                              <span className="text-[10px] uppercase font-bold text-[#8C7355] bg-[#FAF7F2] px-2 py-0.5 rounded-md border border-[#E8DFD1]">
-                                {s.durationMinutes} mins
-                              </span>
                             </div>
                             <p className="text-xs text-[#6E5A44] line-clamp-1">{s.tagline}</p>
                           </div>
@@ -326,7 +326,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 
                   <div className="pt-4 border-t border-[#E8DFD1] flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-[#7A644D]">Total Duration: {totalDuration} mins</span>
+                      <span className="text-xs text-[#7A644D] uppercase font-bold tracking-wider">{selectedServices.length} Service{selectedServices.length > 1 ? 's' : ''} Selected</span>
                       <p className="text-lg font-serif font-bold text-[#3D2E1E]">Subtotal: £{subtotalGBP} GBP</p>
                     </div>
 
@@ -605,7 +605,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       <span>{selectedDate} @ {selectedTimeSlot}</span>
                     </div>
                     <div className="text-[#6E5A44]">
-                      {selectedServices.map((s) => s.name).join(' + ')} ({totalDuration} mins)
+                      {selectedServices.map((s) => s.name).join(' + ')}
                     </div>
                     <div className="flex justify-between text-sm font-bold text-[#2C2015] pt-2 border-t border-[#E8DFD1]">
                       <span>Total Due Upon Arrival</span>

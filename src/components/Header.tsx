@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Sparkles, Phone, Calendar, ShoppingBag, Menu, X, MapPin, Clock, ClipboardList, Lock } from 'lucide-react';
+import { Sparkles, Phone, Calendar, ShoppingBag, Menu, X, MapPin, Clock, Lock, ExternalLink } from 'lucide-react';
+import { SALON_INFO, FRESHA_BOOKING_URL } from '../data/spaData';
 
 interface HeaderProps {
   onOpenBooking: (serviceId?: string) => void;
@@ -24,12 +25,10 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { id: 'hero', label: 'Home' },
-    { id: 'philosophy', label: 'Our Story' },
-    { id: 'head-spa', label: '7-Step Head Spa' },
-    { id: 'services', label: 'Service Menu & Prices' },
-    { id: 'gallery', label: 'Nail & Spa Lookbook' },
-    { id: 'shop', label: 'Botanical Shop' },
-    { id: 'gift-cards', label: 'Gift Cards' },
+    { id: 'services', label: 'Services & Prices' },
+    { id: 'gallery', label: 'Featured Services' },
+    { id: 'faqs', label: 'FAQs' },
+    { id: 'philosophy', label: 'About Us' },
     { id: 'location', label: 'Location & Contact' },
   ];
 
@@ -49,30 +48,28 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="hidden md:flex items-center space-x-4 text-amber-200/90 text-[11px] tracking-wider uppercase">
           <span className="flex items-center gap-1">
             <MapPin className="w-3 h-3 text-amber-300" />
-            55 Royal Crest Avenue, Royal Docks, London E16
+            133 High Street, West Wickham, BR4 0LU
           </span>
           <span>•</span>
           <span className="flex items-center gap-1">
             <Clock className="w-3 h-3 text-amber-300" />
-            Open Today: 10:00 - 19:30
+            Mon - Sat: 09:30 - 18:30
           </span>
         </div>
         
         <div className="mx-auto md:mx-0 flex items-center gap-2 text-xs font-medium tracking-wide">
           <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
-          <span>London's Premier Eastern Head Spa & Clean Nail Sanctuary</span>
-          <span className="hidden sm:inline text-amber-200/80">| Complimentary Botanical Tea Service</span>
+          <span>REVERIE NAIL STUDIO • West Wickham</span>
+          <span className="hidden sm:inline text-amber-200/80">| Manicure, Pedicure, BIAB & Extensions</span>
         </div>
 
         <div className="hidden lg:flex items-center space-x-3 text-xs">
           <a
-            href="https://wa.me/447777326555"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={SALON_INFO.phoneTel}
             className="hover:text-amber-300 transition-colors flex items-center gap-1 text-[11px] tracking-wider uppercase"
           >
             <Phone className="w-3 h-3 text-emerald-400" />
-            WhatsApp +44 7777 326555
+            {SALON_INFO.phone}
           </a>
         </div>
       </div>
@@ -85,14 +82,14 @@ export const Header: React.FC<HeaderProps> = ({
           className="group text-left flex items-center gap-3 focus:outline-none"
         >
           <div className="w-10 h-10 rounded-full bg-[#EADCC9] border border-[#CBB292] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-            <span className="text-[#4A3B2C] font-serif text-lg font-bold">H&B</span>
+            <span className="text-[#4A3B2C] font-serif text-lg font-bold">R</span>
           </div>
           <div>
             <span className="block font-serif text-2xl tracking-[0.15em] text-[#3D2E1E] font-semibold uppercase leading-tight">
-              HONEY & BLOOM
+              REVERIE
             </span>
             <span className="block text-[10px] tracking-[0.25em] text-[#8C7355] uppercase font-light">
-              London • Head Spa & Clean Nails
+              NAIL STUDIO • WEST WICKHAM
             </span>
           </div>
         </button>
@@ -116,45 +113,26 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          {/* Staff Manager Portal Button */}
-          {onOpenAdminPortal && (
-            <button
-              onClick={onOpenAdminPortal}
-              className="hidden lg:flex items-center gap-1.5 bg-[#EADCC9] hover:bg-[#DBCBB5] text-[#3D2E1E] px-3 py-2 rounded-full text-xs font-semibold tracking-wider transition-colors border border-[#CBB292]"
-              title="Confidential Salon Staff Portal (PIN Protected)"
-            >
-              <Lock className="w-3.5 h-3.5 text-[#8C7355]" />
-              <span>Manager Portal</span>
-              {bookingCount > 0 && (
-                <span className="bg-[#4A3B2C] text-amber-200 text-[10px] font-bold px-1.5 py-0.2 rounded-full">
-                  {bookingCount}
-                </span>
-              )}
-            </button>
-          )}
-
-          {/* Shopping Cart Drawer Trigger */}
-          <button
-            onClick={onOpenCart}
-            className="p-2.5 rounded-full text-[#4A3B2C] hover:bg-[#EADCC9]/50 transition-colors relative"
-            title="Botanical Cart"
+          {/* Phone call button */}
+          <a
+            href={SALON_INFO.phoneTel}
+            className="hidden md:flex items-center gap-1.5 text-xs text-[#5A4836] hover:text-[#2C2015] font-semibold px-3 py-2"
           >
-            <ShoppingBag className="w-5 h-5" />
-            {cartCount > 0 && (
-              <span className="absolute top-1 right-1 w-4 h-4 bg-[#8C7355] text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
-          </button>
+            <Phone className="w-3.5 h-3.5 text-[#8C7355]" />
+            <span>{SALON_INFO.phone}</span>
+          </a>
 
-          {/* Primary Book Appointment CTA */}
-          <button
-            onClick={() => onOpenBooking()}
-            className="hidden sm:flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98"
+          {/* Primary Book Now CTA */}
+          <a
+            href={FRESHA_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98"
           >
             <Calendar className="w-3.5 h-3.5 text-amber-300" />
-            <span>Book Appointment</span>
-          </button>
+            <span>Book Now</span>
+            <ExternalLink className="w-3 h-3 opacity-80" />
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -185,25 +163,23 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           <div className="pt-4 border-t border-[#E8DFD1] space-y-3">
-            <button
-              onClick={() => {
-                onOpenBooking();
-                setMobileMenuOpen(false);
-              }}
+            <a
+              href={FRESHA_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full flex items-center justify-center gap-2 bg-[#4A3B2C] text-[#F9F5EF] py-3 rounded-full text-xs tracking-widest uppercase font-medium shadow-sm"
             >
               <Calendar className="w-4 h-4 text-amber-300" />
-              <span>Book Appointment Online</span>
-            </button>
+              <span>Book Now</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
 
             <a
-              href="https://wa.me/447777326555"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={SALON_INFO.phoneTel}
               className="w-full flex items-center justify-center gap-2 border border-[#8C7355] text-[#4A3B2C] py-2.5 rounded-full text-xs tracking-widest uppercase font-medium"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>WhatsApp Concierge</span>
+              <span>Call {SALON_INFO.phone}</span>
             </a>
           </div>
         </div>

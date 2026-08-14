@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
-import { Send, Instagram, Facebook, Phone, MapPin, Sparkles, Heart } from 'lucide-react';
+import React from 'react';
+import { Send, Instagram, Facebook, Phone, MapPin, Sparkles, Heart, ExternalLink, Navigation } from 'lucide-react';
+import { FRESHA_BOOKING_URL, SALON_INFO, GOOGLE_MAPS_URL, FACEBOOK_URL, INSTAGRAM_URL } from '../data/spaData';
 
 interface FooterProps {
   onNavigateTo: (sectionId: string) => void;
   onOpenBooking: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigateTo, onOpenBooking }) => {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubscribed(true);
-    }
-  };
-
+export const Footer: React.FC<FooterProps> = ({ onNavigateTo }) => {
   return (
     <footer className="bg-[#2C2015] text-[#F4ECE1] relative overflow-hidden pt-16 pb-12 border-t border-[#4A3B2C]">
       
@@ -25,46 +16,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTo, onOpenBooking }) =
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
-        {/* Top Newsletter Card */}
-        <div className="bg-[#3D2E1E] p-8 rounded-3xl border border-[#5A4836] shadow-xl flex flex-col lg:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center lg:text-left">
-            <span className="text-amber-300 text-xs uppercase font-bold tracking-widest flex items-center justify-center lg:justify-start gap-1.5">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Sanctuary Insider</span>
-            </span>
-            <h3 className="font-serif text-2xl font-light text-white">
-              Enjoy 10% Off Your First Head Spa Ritual
-            </h3>
-            <p className="text-xs text-amber-200/80">
-              Subscribe to receive private booking slots, botanical care tips & seasonal beauty drops.
-            </p>
-          </div>
-
-          {subscribed ? (
-            <div className="bg-emerald-900/60 text-emerald-200 border border-emerald-500/40 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider">
-              ✨ Welcome! Check your inbox for your 10% voucher code.
-            </div>
-          ) : (
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row w-full lg:w-auto gap-2">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email address..."
-                className="bg-[#2C2015] border border-[#6E5A44] text-xs text-white rounded-full px-5 py-3 focus:outline-none focus:border-amber-300 w-full sm:w-72 placeholder-[#A08C75]"
-              />
-              <button
-                type="submit"
-                className="bg-amber-200 hover:bg-amber-300 text-[#2C2015] font-bold px-6 py-3 rounded-full text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
-              >
-                <span>Subscribe</span>
-                <Send className="w-3.5 h-3.5" />
-              </button>
-            </form>
-          )}
-        </div>
-
         {/* Main Footer Links */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 text-xs text-amber-200/80">
           
@@ -72,40 +23,55 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTo, onOpenBooking }) =
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-amber-200/20 border border-amber-300/30 flex items-center justify-center font-serif text-lg font-bold text-amber-200">
-                H&B
+                R
               </div>
               <div>
                 <span className="font-serif text-2xl tracking-[0.15em] font-bold text-white uppercase block leading-tight">
-                  HONEY & BLOOM
+                  REVERIE NAIL STUDIO
                 </span>
                 <span className="text-[9px] tracking-[0.25em] text-amber-300 uppercase block">
-                  London • Head Spa & Clean Nails
+                  West Wickham • 133 High Street
                 </span>
               </div>
             </div>
 
             <p className="text-xs text-amber-200/70 leading-relaxed max-w-sm">
-              A woman-owned sanctuary blending ancient Vietnamese scalp hydrotherapy with clean, plant-based non-toxic nail care in East London.
+              Your premier nail studio in West Wickham offering luxury Manicures, Pedicures, BIAB builder gels, Ombré sets, Dipping powder and Acrylic enhancements.
             </p>
 
-            <div className="flex items-center space-x-3 text-amber-200">
+            {/* Social Channels in Footer */}
+            <div className="flex flex-wrap items-center gap-3 text-amber-200 pt-1">
               <a
-                href="https://instagram.com"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#3D2E1E] hover:bg-[#5A4836] transition-colors"
-                title="Instagram @honeynbloom"
+                className="px-3 py-1.5 rounded-full bg-[#3D2E1E] hover:bg-[#5A4836] transition-colors flex items-center gap-1.5"
+                title="Instagram @reverie.nail.studio"
               >
-                <Instagram className="w-4 h-4" />
+                <Instagram className="w-3.5 h-3.5 text-pink-400" />
+                <span className="text-[11px]">Instagram</span>
               </a>
+
               <a
-                href="https://facebook.com"
+                href={FACEBOOK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-[#3D2E1E] hover:bg-[#5A4836] transition-colors"
-                title="Facebook Honey & Bloom"
+                className="px-3 py-1.5 rounded-full bg-[#3D2E1E] hover:bg-[#5A4836] transition-colors flex items-center gap-1.5"
+                title="Facebook Reverie Studio"
               >
-                <Facebook className="w-4 h-4" />
+                <Facebook className="w-3.5 h-3.5 text-blue-400" />
+                <span className="text-[11px]">Facebook</span>
+              </a>
+
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 rounded-full bg-[#3D2E1E] hover:bg-[#5A4836] transition-colors flex items-center gap-1.5"
+                title="Google Maps Directions"
+              >
+                <Navigation className="w-3.5 h-3.5 text-amber-400" />
+                <span className="text-[11px]">Google Maps</span>
               </a>
             </div>
           </div>
@@ -113,37 +79,37 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTo, onOpenBooking }) =
           {/* Col 2: Navigation Links */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="font-serif text-sm font-bold uppercase tracking-widest text-amber-100">
-              Quick Navigation
+              Quick Links
             </h4>
             <ul className="space-y-2">
               <li>
                 <button onClick={() => onNavigateTo('hero')} className="hover:text-amber-300 transition-colors">
-                  Home Sanctuary
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigateTo('philosophy')} className="hover:text-amber-300 transition-colors">
-                  Our Story & Founder Donna
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigateTo('head-spa')} className="hover:text-amber-300 transition-colors">
-                  7-Step Japanese Head Spa
+                  Home
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateTo('services')} className="hover:text-amber-300 transition-colors">
-                  Price List & Services
+                  Service Menu & Prices
                 </button>
               </li>
               <li>
                 <button onClick={() => onNavigateTo('gallery')} className="hover:text-amber-300 transition-colors">
-                  Nail Art & Spa Lookbook
+                  Featured Services
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigateTo('gift-cards')} className="hover:text-amber-300 transition-colors">
-                  Luxury Gift Vouchers
+                <button onClick={() => onNavigateTo('faqs')} className="hover:text-amber-300 transition-colors">
+                  Frequently Asked Questions
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigateTo('philosophy')} className="hover:text-amber-300 transition-colors">
+                  About Reverie
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigateTo('location')} className="hover:text-amber-300 transition-colors">
+                  Location & Contact
                 </button>
               </li>
             </ul>
@@ -155,30 +121,64 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTo, onOpenBooking }) =
               Studio Location
             </h4>
             <p className="text-xs text-amber-200/70">
-              Unit 1.1-02, 55 Royal Crest Avenue<br />
-              Royal Docks, London E16 2EB<br />
+              133 High Street<br />
+              West Wickham, BR4 0LU<br />
               United Kingdom
             </p>
             <p className="text-xs text-amber-300 font-bold">
-              WhatsApp: +44 7777 326555
+              Telephone:{' '}
+              <a href={SALON_INFO.phoneTel} className="hover:underline">
+                {SALON_INFO.phone}
+              </a>
             </p>
-            <button
-              onClick={onOpenBooking}
-              className="mt-2 bg-amber-200 hover:bg-amber-300 text-[#2C2015] px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors"
-            >
-              Book Online
-            </button>
+            <div className="pt-2 flex flex-col sm:flex-row gap-2">
+              <a
+                href={FRESHA_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-amber-200 hover:bg-amber-300 text-[#2C2015] px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors"
+              >
+                <span>Book your session now</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#3D2E1E] hover:bg-[#4A3B2C] text-amber-200 px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors border border-amber-300/30"
+              >
+                <Navigation className="w-3.5 h-3.5 text-amber-400" />
+                <span>Map</span>
+              </a>
+            </div>
           </div>
 
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="pt-8 border-t border-[#3D2E1E] flex flex-col sm:flex-row items-center justify-between text-[11px] text-amber-200/60 gap-3">
-          <p>© {new Date().getFullYear()} Honey & Bloom London. All Rights Reserved.</p>
+        {/* Bottom Copyright & Credit Bar */}
+        <div className="pt-8 border-t border-[#3D2E1E] flex flex-col md:flex-row items-center justify-between text-[11px] text-amber-200/60 gap-4 text-center md:text-left">
+          <p>© {new Date().getFullYear()} Reverie Nail Studio. All Rights Reserved.</p>
+          
+          {/* Digital Agency Credit */}
+          <div className="flex items-center gap-1.5 text-xs text-amber-200/80">
+            <span className="text-[11px] text-amber-200/70">Designed & Developed by</span>
+            <a
+              href="https://dinhhiendigital.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-amber-300 hover:text-amber-100 font-semibold tracking-wide transition-all group px-2.5 py-1 rounded-full bg-[#3D2E1E] hover:bg-[#4A3B2C] border border-amber-300/25 shadow-2xs"
+              title="Visit Dinh Hien Digital"
+            >
+              <span>Đình Hiển Digital</span>
+              <ExternalLink className="w-3 h-3 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
+          </div>
+
           <div className="flex items-center gap-1">
-            <span>Crafted with</span>
-            <Heart className="w-3 h-3 text-red-400 fill-red-400 inline" />
-            <span>in Royal Docks, East London</span>
+            <a href={GOOGLE_MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:underline text-amber-300/80">
+              133 High Street, West Wickham, BR4 0LU
+            </a>
           </div>
         </div>
 

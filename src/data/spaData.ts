@@ -1,430 +1,662 @@
 import { ServiceItem, Therapist, Product, GalleryItem, Review, FAQItem } from '../types';
 
+export const FRESHA_BOOKING_URL = 'https://www.fresha.com/en-GB/a/reverie-nail-studio-west-wickham-133-high-street-iahgkjhe?pId=2873666';
+export const GOOGLE_MAPS_URL = 'https://maps.app.goo.gl/2TzY5SyqYPgQvU237';
+export const FACEBOOK_URL = 'https://www.facebook.com/profile.php?id=61589489720653';
+export const INSTAGRAM_URL = 'https://www.instagram.com/reverie.nail.studio';
+export const SALON_PHONE = '+20 3 1436868';
+export const SALON_PHONE_TEL = 'tel:+2031436868';
+
+export const SALON_INFO = {
+  name: 'REVERIE NAIL STUDIO',
+  address: '133 High Street, West Wickham, BR4 0LU',
+  phone: SALON_PHONE,
+  phoneTel: SALON_PHONE_TEL,
+  instagram: '@reverie.nail.studio',
+  instagramUrl: INSTAGRAM_URL,
+  facebookUrl: FACEBOOK_URL,
+  googleMapsUrl: GOOGLE_MAPS_URL,
+  freshaUrl: FRESHA_BOOKING_URL,
+};
+
 export const HERO_IMAGES = {
-  hero: '/src/assets/images/honey_bloom_hero_1786591156509.jpg',
-  headSpa: '/src/assets/images/honey_head_spa_1786591166315.jpg',
-  nailArt: '/src/assets/images/honey_nail_art_1786591176285.jpg',
-  interior: '/src/assets/images/honey_spa_interior_1786591187350.jpg'
+  hero: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=1200',
+  nails1: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800',
+  nails2: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=800',
+  interior: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800'
 };
 
 export const SERVICES: ServiceItem[] = [
-  // Head Spa Rituals
+  // MANICURE & PEDICURE
   {
-    id: 'head-spa-signature',
-    name: 'Honey & Bloom Signature Head Spa',
-    category: 'head-spa',
-    durationMinutes: 75,
-    priceGBP: 110,
-    tagline: 'Our flagship 7-step Eastern scalp hydrotherapy ritual with Halo Waterfall & Botanical Steam.',
-    description: 'Experience deep relief and hair rejuvenation with our authentic Eastern scalp treatment. Includes microscopic scalp analysis, organic botanical oil steam, circular Halo Waterfall washing, acupressure neck & shoulder massage, custom scalp mask, herbal tea session, and gentle blowout.',
-    highlights: [
-      'Microscopic scalp & hair follicle analysis',
-      'Warm organic herbal steam & hair bath',
-      'Circular Halo Waterfall hydrotherapy ring',
-      'Deep acupressure scalp, neck & shoulder massage',
-      'Herbal tea pairing & soft styling'
-    ],
-    recommendedFor: 'Stress relief, dry scalp, hair loss prevention, tension headaches, ultimate relaxation',
-    image: HERO_IMAGES.headSpa,
+    id: 'gel-pedicure',
+    name: 'Gel Pedicure',
+    category: 'manicure-pedicure',
+    durationMinutes: 50,
+    durationDisplay: '50 mins',
+    priceGBP: 38,
+    priceDisplay: '£38',
+    tagline: 'Pamper your feet with an indulgent treatment that combines essential foot care practices.',
+    description: 'Pamper your feet with an indulgent treatment that combines essential foot care practices. This luxurious gel pedicure includes detailed cuticle grooming, effective callus removal, and gentle exfoliation to reveal softer skin. Enjoy the soothing warmth of a hot towel wrap and the relaxing touch of a hot stone massage, followed by a flawless application of gel polish for a stunning finish. Rejuvenate your feet and step out feeling fresh and fabulous.',
+    highlights: ['Cuticle grooming & callus removal', 'Gentle exfoliation & hot towel wrap', 'Hot stone massage & flawless gel polish'],
     popular: true
   },
   {
-    id: 'head-spa-jade-imperial',
-    name: 'Imperial Jade Scalp & Facial Renewal',
-    category: 'head-spa',
-    durationMinutes: 90,
-    priceGBP: 140,
-    tagline: 'The ultimate 90-minute holistic scalp, guasha & LED facial ritual for mind-body restoration.',
-    description: 'An elevated journey incorporating authentic Jade Guasha scalp scraping, warm basalt stone neck therapy, organic herbal eye pillow compression, red-light hair follicle stimulation, and deep cleansing Halo Waterfall.',
-    highlights: [
-      'Jade Guasha scalp lymphatic drainage',
-      'Basalt hot stone neck & decollete therapy',
-      'LED Red Light hair follicle stimulation',
-      'Halo Waterfall hydrotherapy & botanical steam',
-      'Includes complimentary takeaway Cuticle Oil'
-    ],
-    recommendedFor: 'Chronic neck tension, insomnia, dry damaged hair, scalp lymphatic detox',
-    image: HERO_IMAGES.hero,
+    id: 'gel-mani-pedi',
+    name: 'Gel Mani & Pedi',
+    category: 'manicure-pedicure',
+    durationMinutes: 95,
+    durationDisplay: '1 hour 35 mins • 2 services',
+    priceGBP: 68,
+    priceDisplay: '£68',
+    originalPriceDisplay: '£71',
+    discountBadge: 'Save £3',
+    tagline: 'Experience complete hand and foot care with our Gel Mani & Pedi bundle.',
+    description: 'Experience complete hand and foot care with our Gel Mani & Pedi bundle. Enjoy nail shaping, cuticle care, and exfoliation, followed by a soothing hot towel wrap. Relax with a rejuvenating hot stone massage, finished off with a flawless regular polish. Indulge in this comprehensive treatment that leaves your nails looking their best.',
+    highlights: ['Nail shaping & precision cuticle care', 'Exfoliation, hot towel wrap & hot stone massage', 'Flawless polish application bundle'],
     popular: true
   },
   {
-    id: 'head-spa-express',
-    name: 'Express Scalp Refresh & Halo Wash',
-    category: 'head-spa',
-    durationMinutes: 45,
-    priceGBP: 75,
-    tagline: 'A targeted 45-minute revitalizing scalp wash & halo waterfall hydro-session.',
-    description: 'Ideal for busy schedules. Enjoy a clarifying scalp scrub, warm halo waterfall rinse, soothing head massage, organic conditioning rinse, and quick rough dry.',
-    highlights: [
-      'Clarifying tea tree scalp scrub',
-      'Halo waterfall circulation rinse',
-      'Focus head acupressure massage',
-      'Leave-in botanical shine serum'
-    ],
-    recommendedFor: 'Quick mid-week refresh, post-workout scalp detox'
-  },
-
-  // Manicures
-  {
-    id: 'mani-biab',
-    name: 'BIAB Builder Gel Structure Manicure',
-    category: 'manicure',
-    durationMinutes: 65,
-    priceGBP: 60,
-    tagline: 'Strengthening Builder in a Bottle with Russian precision cuticle care.',
-    description: 'Protect and grow your natural nails with Builder in a Bottle (BIAB). Features immaculate dry Russian E-file cuticle work, nail shaping, BIAB apex reinforcement, non-toxic gel color, and organic honey balm massage.',
-    highlights: [
-      'Russian dry E-file precision cuticle prep',
-      'BIAB structural apex builder layer',
-      'Non-toxic 10-free vegan gel polish',
-      'Organic Cuticle Honey & hand massage'
-    ],
-    recommendedFor: 'Weak, brittle nails wanting long natural growth and 3-4 week durability',
-    image: HERO_IMAGES.nailArt,
-    popular: true
-  },
-  {
-    id: 'mani-clean-organic',
-    name: 'Honey & Bloom Clean Organic Manicure',
-    category: 'manicure',
-    durationMinutes: 45,
-    priceGBP: 45,
-    tagline: 'Nourishing plant-based manicure with organic botanicals & natural polish.',
-    description: 'A gentle, chemical-free manicure using 100% vegan, plant-derived care products. Hand soak in herbal rose water, warm jojoba cuticle oil treatment, shape, buff, organic polish, and hand reflexology.',
-    highlights: [
-      'Warm botanical floral hand soak',
-      'Plant-based organic oils & sugar scrub',
-      'Non-toxic 10-free air-dry or gel polish',
-      'Warm towel wrap & massage'
-    ],
-    recommendedFor: 'Clean beauty lovers, pregnant clients, natural nail enthusiasts'
-  },
-  {
-    id: 'mani-gel-x',
-    name: 'Gel-X Full Soft Gel Extension Studio',
-    category: 'manicure',
-    durationMinutes: 75,
-    priceGBP: 75,
-    tagline: 'Lightweight, damage-free soft gel extensions tailored to your custom shape.',
-    description: 'Aprés Gel-X soft gel extensions offer immediate length and flawless shape without acrylic fumes or nail plate damage. Includes full prep, custom tip fitting, gel coat, and cuticle hydration.',
-    highlights: [
-      'Damage-free Aprés Gel-X system',
-      'Custom choice: Almond, Coffin, Square, Oval',
-      'Ultra-natural lightweight feel',
-      'Lasts up to 4 weeks cleanly'
-    ],
-    popular: false
-  },
-
-  // Pedicures
-  {
-    id: 'pedi-luxury-honey',
-    name: 'Honey & Organic Botanical Spa Pedicure',
-    category: 'pedicure',
-    durationMinutes: 60,
-    priceGBP: 65,
-    tagline: 'Restorative foot bath in warm honey-milk, herbal scrub & warm stone calf massage.',
-    description: 'Immerse your feet in a soothing warm honey and lavender flower foot soak. Followed by organic brown sugar exfoliation, calloused heel smoothing, cuticle prep, warm stone leg massage, and non-toxic polish.',
-    highlights: [
-      'Warm organic milk & honey foot bath',
-      'Brown sugar & oat botanical scrub',
-      'Basalt warm stone calf & foot reflexology',
-      'Deep moisturizing honey butter wrap'
-    ],
-    recommendedFor: 'Tired feet, dry heels, complete lower body relaxation',
-    image: HERO_IMAGES.interior,
-    popular: true
-  },
-  {
-    id: 'pedi-express',
-    name: 'Express Clean Pedicure',
-    category: 'pedicure',
-    durationMinutes: 40,
-    priceGBP: 50,
-    tagline: 'Essential foot grooming, shaping & non-toxic polish refresh.',
-    description: 'Foot soak, nail trim and shape, gentle cuticle care, light scrub, hydrating lotion, and long-lasting non-toxic polish.',
-    highlights: [
-      'Herbal foot soak',
-      'Nail shaping & cuticle prep',
-      'Non-toxic gel or lacquer polish'
-    ]
-  },
-
-  // Packages
-  {
-    id: 'package-grand-bloom',
-    name: 'The Grand Bloom Sanctuary Duo',
-    category: 'packages',
-    durationMinutes: 150,
-    priceGBP: 185,
-    tagline: 'Our signature Head Spa + BIAB Manicure ritual in a private luxury suite.',
-    description: 'Combine our 75-minute Signature Head Spa with our Russian E-file BIAB Manicure. Served with organic sparkling flower tea, artisan macarons, and a complimentary take-home cuticle oil.',
-    highlights: [
-      '75-min Signature Halo Waterfall Head Spa',
-      '65-min BIAB Builder Gel Manicure',
-      'Glass of organic sparkling botanical tea',
-      'Complementary gift bag (£25 value)'
-    ],
-    recommendedFor: 'Bridal prep, birthday pampering, self-love days, ultimate gifts',
-    popular: true
-  },
-  {
-    id: 'package-head-pedi',
-    name: 'Head & Sole Botanical Harmony',
-    category: 'packages',
-    durationMinutes: 120,
-    priceGBP: 160,
-    tagline: '75-minute Head Spa paired with Honey Milk Spa Pedicure.',
-    description: 'Total top-to-toe bliss. Experience the calming halo waterfall while your feet soak in warm honey botanical waters, followed by scalp hydrotherapy and foot stone massage.',
-    highlights: [
-      '75-min Signature Head Spa',
-      '45-min Honey Spa Pedicure',
-      'Herbal tea pairing'
-    ]
-  },
-
-  // Add-ons
-  {
-    id: 'addon-nail-art-tier1',
-    name: 'Nail Art Tier 1: Minimalist Line & Micro-French',
-    category: 'add-ons',
-    durationMinutes: 15,
-    priceGBP: 15,
-    tagline: 'Subtle micro-french tips, clean dots, chrome accent or single flower.',
-    description: 'Elegant, minimal accents designed to elevate natural nails.',
-    highlights: ['Micro-french', 'Chrome powder glow', 'Gold foil accents']
-  },
-  {
-    id: 'addon-nail-art-tier2',
-    name: 'Nail Art Tier 2: Blooming Gel & Honey Gold Art',
-    category: 'add-ons',
+    id: 'classic-manicure',
+    name: 'Classic Manicure',
+    category: 'manicure-pedicure',
     durationMinutes: 30,
-    priceGBP: 28,
-    tagline: 'Hand-painted floral blooms, honey drips, cat-eye velvet or pearl glaze.',
-    description: 'Intricate custom artwork on all 10 fingers.',
-    highlights: ['Handpainted floral bloom', 'Velvet cat-eye', 'Honey dripping gold']
+    durationDisplay: '30 mins',
+    priceGBP: 20,
+    priceDisplay: '£20',
+    tagline: 'Transform your hands into a canvas of beauty with our Classic Manicure.',
+    description: 'Transform your hands into a canvas of beauty with our Classic Manicure. Enjoy meticulous shaping and cuticle care, alongside a soothing hand massage that revitalises your skin. Experience gentle exfoliation followed by a pampering hot towel wrap, leaving you feeling refreshed. Finally, choose your favourite regular polish to complete your stunning look. Step out with nails that are perfectly polished and hands that are beautifully nourished.',
+    highlights: ['Meticulous shaping & cuticle care', 'Soothing hand massage & gentle exfoliation', 'Pampering hot towel wrap & regular polish'],
+    popular: true
   },
   {
-    id: 'addon-scalp-led',
-    name: 'Scalp LED Light Therapy & Follicle Ampoule',
+    id: 'classic-pedicure',
+    name: 'Classic Pedicure',
+    category: 'manicure-pedicure',
+    durationMinutes: 45,
+    durationDisplay: '45 mins',
+    priceGBP: 33,
+    priceDisplay: '£33',
+    tagline: 'Treat your feet to a rejuvenating experience that goes beyond the basics.',
+    description: 'Treat your feet to a rejuvenating experience that goes beyond the basics. Our Classic Pedicure includes meticulous shaping, expert cuticle care, and thorough callus removal, leaving your feet smooth and revitalised. Enjoy a gentle exfoliation followed by a soothing hot stone massage, and indulge in a warming hot towel wrap for ultimate relaxation. To finish, choose a regular polish that adds a touch of elegance to your look. Relax and unwind as we pamper your feet in a serene atmosphere.',
+    highlights: ['Meticulous shaping & expert cuticle care', 'Thorough callus removal & gentle exfoliation', 'Soothing hot stone massage & hot towel wrap with regular polish'],
+    popular: true
+  },
+  {
+    id: 'classic-mani-pedi',
+    name: 'Classic Mani & Pedi',
+    category: 'manicure-pedicure',
+    durationMinutes: 75,
+    durationDisplay: '1 hour 15 mins • 2 services',
+    priceGBP: 50,
+    priceDisplay: '£50',
+    originalPriceDisplay: '£53',
+    discountBadge: 'Save 6%',
+    tagline: 'Indulge in a complete hand and foot care experience that rejuvenates and refreshes.',
+    description: 'Indulge in a complete hand and foot care experience that rejuvenates and refreshes. This bundle includes nail shaping, meticulous cuticle care, and gentle exfoliation to enhance your skin’s texture. Enjoy a soothing hot towel wrap and a relaxing hot stone massage that melts away tension, followed by a fresh application of regular polish. Treat yourself to essential pampering today!',
+    highlights: ['Nail shaping & meticulous cuticle care', 'Gentle exfoliation & soothing hot towel wrap', 'Relaxing hot stone massage & fresh regular polish'],
+    popular: true
+  },
+  {
+    id: 'gel-colour-only',
+    name: 'Gel Colour only - Hands or Toes',
+    category: 'manicure-pedicure',
+    durationMinutes: 30,
+    durationDisplay: '30 mins',
+    priceGBP: 28,
+    priceDisplay: '£28',
+    tagline: 'Elevate your nail game with a stunning gel polish application that enhances your natural beauty.',
+    description: 'Elevate your nail game with a stunning gel polish application that enhances your natural beauty. Experience a meticulous gel colour treatment for your hands or toes, providing a flawless finish that lasts. Our premium gel polish delivers vibrant colour and a lasting shine, keeping your nails looking immaculate for weeks on end.',
+    highlights: ['Hands or toes options', 'Vibrant colour & high-gloss lasting shine', 'Meticulous and long-lasting gel polish']
+  },
+  {
+    id: 'regular-polish-change',
+    name: 'Regular Polish Change',
+    category: 'manicure-pedicure',
+    durationMinutes: 15,
+    durationDisplay: '15 mins',
+    priceGBP: 'from £10',
+    priceDisplay: 'from £10',
+    tagline: 'Transform your nails with a beautiful new polish that elevates your look.',
+    description: 'Transform your nails with a beautiful new polish that elevates your look. This quick service refreshes your manicure or pedicure, ensuring your hands and feet remain stylish and well-groomed. Perfect for keeping your nails in top condition.',
+    highlights: ['Quick shape and fresh polish coat', 'Hands or feet refresh', 'Keeps nails stylish & well-groomed']
+  },
+  {
+    id: 'manicure-ibx',
+    name: 'Manicure with IBX treatment',
+    category: 'manicure-pedicure',
+    durationMinutes: 40,
+    durationDisplay: '40 mins',
+    priceGBP: 33,
+    priceDisplay: '£33',
+    tagline: 'Pamper your hands with a rejuvenating manicure that includes the nourishing IBX treatment.',
+    description: 'Pamper your hands with a rejuvenating manicure that includes the nourishing IBX treatment. This service will care for your nails and help improve their strength, leaving you with beautifully polished and healthy-looking hands.',
+    highlights: ['Nourishing IBX strengthening treatment', 'Repairs and protects natural nails', 'Leaves hands beautifully polished & healthy'],
+    popular: true
+  },
+
+  // BIAB (BUILDER IN A BOTTLE)
+  {
+    id: 'biab-overlay',
+    name: 'BIAB Overlay',
+    category: 'biab',
+    durationMinutes: 50,
+    durationDisplay: '50 mins',
+    priceGBP: 35,
+    priceDisplay: '£35',
+    tagline: 'Transform your nails with our exceptional BIAB Overlay, designed to enhance strength and structure.',
+    description: 'Transform your nails with our exceptional BIAB Overlay, designed to enhance strength and structure while maintaining a natural look. This service includes thorough nail preparation and allows you to choose your favourite colour, ensuring a stunning finish that suits your style.',
+    highlights: ['Builder In A Bottle strength & apex reinforcement', 'Thorough professional nail preparation', 'Choice of colour for a stunning natural look'],
+    popular: true
+  },
+  {
+    id: 'biab-infill',
+    name: 'BIAB Infill',
+    category: 'biab',
+    durationMinutes: 40,
+    durationDisplay: '40 mins',
+    priceGBP: 32,
+    priceDisplay: '£32',
+    tagline: 'Revitalize your nails with our expert maintenance service designed specifically for your BIAB set.',
+    description: 'Revitalize your nails with our expert maintenance service designed specifically for your BIAB set. This treatment includes filling in new growth, reshaping your nails to perfection, and applying a fresh coat of gel colour for a stunning finish.',
+    highlights: ['Fills in new natural growth', 'Reshaping & balancing to perfection', 'Fresh coat of gel colour'],
+    popular: true
+  },
+
+  // NAIL EXTENSIONS (ACRYLIC & OMBRÉ)
+  {
+    id: 'acrylic-extensions-gel',
+    name: 'Acrylic Extensions with Gel Colour',
+    category: 'extensions',
+    durationMinutes: 50,
+    durationDisplay: '50 mins',
+    priceGBP: 38,
+    priceDisplay: '£38',
+    tagline: 'Transform your nails with beautiful extensions shaped to your unique style.',
+    description: 'Transform your nails with beautiful extensions shaped to your unique style. Our expert team sculpts acrylic enhancements to your desired length and finish with high-gloss gel colour.',
+    highlights: ['Sculpted to desired length & shape', 'Meticulous preparation', 'Vibrant long-lasting gel colour'],
+    popular: true
+  },
+  {
+    id: 'acrylic-infill-gel',
+    name: 'Acrylic Infill with Gel Colour',
+    category: 'extensions',
+    durationMinutes: 45,
+    durationDisplay: '45 mins',
+    priceGBP: 35,
+    priceDisplay: '£35',
+    tagline: 'Revitalize your acrylic nails with our exceptional infill service, expertly crafted to keep your manicure looking flawless.',
+    description: 'Revitalize your acrylic nails with our exceptional infill service, expertly crafted to keep your manicure looking flawless. This treatment effectively addresses new growth while providing reshaping for the perfect finish. Choose from a vibrant selection of gel colours to complement your unique style.',
+    highlights: ['Addresses new growth effectively', 'Expert reshaping for a perfect finish', 'Vibrant selection of gel colours'],
+    popular: true
+  },
+  {
+    id: 'acrylic-extensions-regular',
+    name: 'Acrylic Extensions with Regular Polish',
+    category: 'extensions',
+    durationMinutes: 45,
+    durationDisplay: '45 mins',
+    priceGBP: 33,
+    priceDisplay: '£33',
+    tagline: 'Transform your look with stunning nail enhancements tailored to your preferred length and shape.',
+    description: 'Transform your look with stunning nail enhancements tailored to your preferred length and shape. Our treatment includes meticulous nail preparation followed by a regular polish of your choice.',
+    highlights: ['Tailored to preferred length and shape', 'Meticulous nail preparation', 'Choice of classic regular polish']
+  },
+  {
+    id: 'acrylic-infill-regular',
+    name: 'Acrylic Infill with Regular Polish',
+    category: 'extensions',
+    durationMinutes: 40,
+    durationDisplay: '40 mins',
+    priceGBP: 30,
+    priceDisplay: '£30',
+    tagline: 'Revitalize your acrylic nails with our infill service, designed to keep your manicure looking flawless.',
+    description: 'Revitalize your acrylic nails with our infill service, designed to keep your manicure looking flawless. This treatment includes a fill to address new growth, expert reshaping for a perfect finish, and a selection of regular polish to suit your style. Enjoy beautifully maintained nails.',
+    highlights: ['Fill to address new growth', 'Expert reshaping for a perfect finish', 'Selection of regular polish to suit your style']
+  },
+  {
+    id: 'full-set-ombre',
+    name: 'Full Set Ombré',
+    category: 'extensions',
+    durationMinutes: 50,
+    durationDisplay: '50 mins',
+    priceGBP: 40,
+    priceDisplay: '£40',
+    tagline: 'Transform your nails with a beautiful blend of colours that seamlessly transitions from one hue to another.',
+    description: 'Transform your nails with a beautiful blend of colours that seamlessly transitions from one hue to another. Each nail is expertly shaped to your desired length and finished with a stunning soft ombré effect, giving your hands a chic and elegant look.',
+    highlights: ['Seamless blend of colours', 'Expertly shaped to desired length', 'Stunning soft ombré effect'],
+    popular: true
+  },
+  {
+    id: 'infill-ombre',
+    name: 'Infill Ombré',
+    category: 'extensions',
+    durationMinutes: 40,
+    durationDisplay: '40 mins',
+    priceGBP: 37,
+    priceDisplay: '£37',
+    tagline: 'Revitalize your nails with our infill ombré service, designed to maintain the beauty of your existing ombré set.',
+    description: 'Revitalize your nails with our infill ombré service, designed to maintain the beauty of your existing ombré set. Enjoy a thorough refill and precise shaping, topped off with a flawlessly blended ombré finish that will leave your nails looking stunning.',
+    highlights: ['Thorough ombré refill', 'Precise shaping & structure rebalance', 'Flawlessly blended ombré finish']
+  },
+
+  // DIPPING POWDER
+  {
+    id: 'dipping-powder-overlay',
+    name: 'Dipping Powder Overlay',
+    category: 'dipping-powder',
+    durationMinutes: 45,
+    durationDisplay: '45 mins',
+    priceGBP: 35,
+    priceDisplay: '£35',
+    tagline: 'Elevate your nail game with our lightweight dipping powder overlay.',
+    description: 'Elevate your nail game with our lightweight dipping powder overlay. This innovative treatment not only enhances the beauty of your natural nails but also adds exceptional strength. Choose from a stunning array of colours to express your unique style, ensuring a flawless and long-lasting finish that leaves your nails looking fabulous and feeling resilient.',
+    highlights: ['Lightweight & adds exceptional strength', 'Stunning array of colours', 'Flawless, resilient & long-lasting finish'],
+    popular: true
+  },
+  {
+    id: 'dipping-powder-extensions',
+    name: 'Dipping Powder Extensions',
+    category: 'dipping-powder',
+    durationMinutes: 50,
+    durationDisplay: '50 mins',
+    priceGBP: 37,
+    priceDisplay: '£37',
+    tagline: 'Transform your nails with stunning colour and added length through our innovative dipping powder technique.',
+    description: 'Transform your nails with stunning colour and added length through our innovative dipping powder technique. Your extensions are expertly shaped to fit your personal style, providing a strong and long-lasting finish. Experience vibrant hues and exceptional durability, ensuring your nails look fabulous for weeks to come.',
+    highlights: ['Added length with dipping powder', 'Expertly shaped to personal style', 'Vibrant hues & exceptional durability']
+  },
+
+  // ADD-ONS
+  {
+    id: 'addon-nail-repair',
+    name: 'Nail repair',
     category: 'add-ons',
     durationMinutes: 15,
-    priceGBP: 20,
-    tagline: 'Targeted red LED light therapy to stimulate hair growth.',
-    description: 'Complements any Head Spa with localized LED wavelength therapy and botanical peptide serum.',
-    highlights: ['Red spectrum 650nm light', 'Peptide hair density serum']
-  }
-];
-
-export const THERAPISTS: Therapist[] = [
-  {
-    id: 'donna-founder',
-    name: 'Donna',
-    role: 'Founder & Master Head Spa Practitioner',
-    bio: 'Born in Vietnam and raised in East London, Donna founded Honey & Bloom to bring authentic Eastern scalp care and clean non-toxic beauty rituals to Royal Docks.',
-    specialties: ['Signature Head Spa', 'Jade Guasha Scalp Therapy', 'Bridal Rituals'],
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
-    rating: 5.0
+    durationDisplay: '15 mins',
+    priceGBP: 5,
+    priceDisplay: '£5',
+    tagline: 'Quick and gentle repair for broken, chipped or cracked nails.',
+    description: 'Quick and gentle repair for broken, chipped or cracked nails to restore strength and seamless beauty to your manicure.',
+    highlights: ['Quick 15-minute repair', 'Restores strength & beauty', 'Seamless fix for chipped or cracked nails']
   },
   {
-    id: 'maya-head-spa',
-    name: 'Maya',
-    role: 'Senior Scalp & Hydrotherapy Specialist',
-    bio: 'Certified in Japanese Halo Waterfall techniques and holistic neck acupressure with 6+ years of scalp wellness experience.',
-    specialties: ['Halo Waterfall Hydrotherapy', 'Hot Stone Neck Relief', 'Deep Scalp Detox'],
-    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400',
-    rating: 4.9
-  },
-  {
-    id: 'chloe-nail-artist',
-    name: 'Chloe',
-    role: 'Russian Precision & BIAB Nail Artist',
-    bio: 'Master of Russian E-file cuticle technique and delicate hand-painted honey bloom nail art.',
-    specialties: ['BIAB Structure', 'Russian Cuticle Care', 'Blooming Gel Artistry'],
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
-    rating: 4.9
-  }
-];
-
-export const PRODUCTS: Product[] = [
-  {
-    id: 'prod-scalp-serum',
-    name: 'Organic Scalp Elixir & Growth Oil',
-    category: 'scalp-care',
-    priceGBP: 28,
-    volume: '50ml',
-    description: 'Cold-pressed rosemary, honey extract, jojoba, and tea tree oil to nourish roots and balance scalp sebum.',
-    ingredients: ['Rosemary Leaf Oil', 'Pure Honey Extract', 'Cold-pressed Jojoba', 'Peppermint Oil'],
-    image: HERO_IMAGES.interior,
-    inStock: true
-  },
-  {
-    id: 'prod-cuticle-honey',
-    name: 'Botanical Cuticle Honey Drop',
-    category: 'nail-care',
-    priceGBP: 18,
-    volume: '15ml',
-    description: 'Our signature cuticle oil infused with raw acacia honey, vitamin E, and sweet almond oil in a dropper bottle.',
-    ingredients: ['Sweet Almond Oil', 'Raw Acacia Honey', 'Vitamin E Tocopherol', 'Chamomile Extract'],
-    image: HERO_IMAGES.nailArt,
-    inStock: true
-  },
-  {
-    id: 'prod-tea-bloom',
-    name: 'Honey & Bloom House Herbal Tea',
-    category: 'wellness-tea',
-    priceGBP: 16,
-    volume: '100g loose leaf',
-    description: 'Our custom blend of organic chamomile, chrysanthemum flowers, honeycomb shavings, and lemongrass.',
-    ingredients: ['Organic Chamomile', 'Chrysanthemum', 'Dehydrated Honeycomb', 'Lemongrass'],
-    image: HERO_IMAGES.interior,
-    inStock: true
-  },
-  {
-    id: 'prod-guasha-comb',
-    name: 'Rose Quartz Scalp Guasha Comb',
-    category: 'tools',
-    priceGBP: 22,
-    volume: '1 Piece',
-    description: 'Hand-carved natural rose quartz comb designed to stimulate scalp blood flow and ease headache tension.',
-    image: HERO_IMAGES.headSpa,
-    inStock: true
+    id: 'addon-removal-only',
+    name: 'Removal only',
+    category: 'add-ons',
+    durationMinutes: 20,
+    durationDisplay: '15 mins - 20 mins',
+    priceGBP: 'from £10',
+    priceDisplay: 'from £10',
+    tagline: 'Experience a gentle and professional removal of gel polish or acrylic extensions.',
+    description: 'Experience a gentle and professional removal of gel polish or acrylic extensions. Our expert team at Reverie Nail Studio ensures a safe process that protects your natural nails while effectively removing any old enhancements.',
+    highlights: ['Safe and gentle removal process', 'Protects natural nail beds', 'Suitable for gel polish or acrylic extensions']
   }
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
-    id: 'gal-1',
-    title: 'Honey Gold Leaf BIAB Manicure',
-    category: 'nail-art',
-    image: HERO_IMAGES.nailArt,
-    description: 'Russian dry prep with BIAB nude base, real 24k gold foil accents, and glossy gel finish.',
-    serviceIdToBook: 'mani-biab'
-  },
-  {
-    id: 'gal-2',
-    title: 'Japanese Halo Waterfall Head Spa Suite',
-    category: 'head-spa',
-    image: HERO_IMAGES.headSpa,
-    description: 'Our custom water fountain halo ring circulating warm herbal infusion over scalp.',
-    serviceIdToBook: 'head-spa-signature'
-  },
-  {
-    id: 'gal-3',
-    title: 'Tranquil Royal Docks Sanctuary',
-    category: 'sanctuary',
-    image: HERO_IMAGES.hero,
-    description: 'Warm travertine stone, soft linen curtains, and peaceful organic lighting in London E16.',
-    serviceIdToBook: 'package-grand-bloom'
-  },
-  {
-    id: 'gal-4',
-    title: 'Honey Milk Spa Pedicure',
+    id: 'spotlight-gel-pedicure',
+    title: 'Gel Pedicure',
     category: 'pedicure',
-    image: HERO_IMAGES.interior,
-    description: 'Aromatherapy soak with fresh rose petals and warm basalt stone leg massage.',
-    serviceIdToBook: 'pedi-luxury-honey'
+    categoryLabel: 'Manicure & Pedicure',
+    image: 'https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?auto=format&fit=crop&q=80&w=800',
+    description: 'Pamper your feet with an indulgent treatment that combines essential foot care practices. This luxurious gel pedicure includes detailed cuticle grooming, effective callus removal, and gentle exfoliation to reveal softer skin. Enjoy the soothing warmth of a hot towel wrap and the relaxing touch of a hot stone massage, followed by a flawless application of gel polish for a stunning finish. Rejuvenate your feet and step out feeling fresh and fabulous.',
+    duration: '50 mins',
+    price: '£38',
+    badge: 'Guest Favorite',
+    highlights: ['Cuticle grooming & callus removal', 'Gentle exfoliation & hot towel wrap', 'Hot stone massage & flawless gel polish'],
+    serviceIdToBook: 'gel-pedicure'
+  },
+  {
+    id: 'spotlight-gel-mani-pedi',
+    title: 'Gel Mani & Pedi',
+    category: 'combo',
+    categoryLabel: 'Manicure & Pedicure Combo',
+    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=800',
+    description: 'Experience complete hand and foot care with our Gel Mani & Pedi bundle. Enjoy nail shaping, cuticle care, and exfoliation, followed by a soothing hot towel wrap. Relax with a rejuvenating hot stone massage, finished off with a flawless regular polish. Indulge in this comprehensive treatment that leaves your nails looking their best.',
+    duration: '1 hour 35 mins • 2 services',
+    price: '£68',
+    originalPrice: '£71',
+    badge: 'Save £3',
+    highlights: ['Nail shaping & precision cuticle care', 'Exfoliation, hot towel wrap & hot stone massage', 'Flawless polish application bundle'],
+    serviceIdToBook: 'gel-mani-pedi'
+  },
+  {
+    id: 'spotlight-biab-overlay',
+    title: 'BIAB Overlay',
+    category: 'biab',
+    categoryLabel: 'BIAB (Builder In A Bottle)',
+    image: 'https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&q=80&w=800',
+    description: 'Transform your nails with our exceptional BIAB Overlay, designed to enhance strength and structure while maintaining a natural look. This service includes thorough nail preparation and allows you to choose your favourite colour, ensuring a stunning finish that suits your style.',
+    duration: '50 mins',
+    price: '£35',
+    badge: 'Nail Health',
+    highlights: ['Builder In A Bottle strength & apex reinforcement', 'Thorough professional nail preparation', 'Choice of colour for a stunning natural look'],
+    serviceIdToBook: 'biab-overlay'
+  },
+  {
+    id: 'spotlight-acrylic-extensions-gel',
+    title: 'Acrylic Extensions with Gel Colour',
+    category: 'extensions',
+    categoryLabel: 'Nail Extensions (Acrylic)',
+    image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=800',
+    description: 'Transform your nails with beautiful extensions shaped to your unique style. Our expert team sculpts acrylic enhancements to your desired length and finish with high-gloss gel colour.',
+    duration: '50 mins',
+    price: '£38',
+    badge: 'Popular',
+    highlights: ['Sculpted to desired length & shape', 'Meticulous preparation', 'Vibrant long-lasting gel colour'],
+    serviceIdToBook: 'acrylic-extensions-gel'
+  },
+  {
+    id: 'spotlight-full-set-ombre',
+    title: 'Full Set Ombré',
+    category: 'extensions',
+    categoryLabel: 'Ombré Extensions',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800',
+    description: 'Transform your nails with a beautiful blend of colours that seamlessly transitions from one hue to another. Each nail is expertly shaped to your desired length and finished with a stunning soft ombré effect, giving your hands a chic and elegant look.',
+    duration: '50 mins',
+    price: '£40',
+    badge: 'Trending',
+    highlights: ['Seamless blend of colours', 'Expertly shaped to desired length', 'Stunning soft ombré effect'],
+    serviceIdToBook: 'full-set-ombre'
+  },
+  {
+    id: 'spotlight-dipping-powder-overlay',
+    title: 'Dipping Powder Overlay',
+    category: 'dipping-powder',
+    categoryLabel: 'Dipping Powder',
+    image: 'https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80&w=800',
+    description: 'Elevate your nail game with our lightweight dipping powder overlay. This innovative treatment not only enhances the beauty of your natural nails but also adds exceptional strength. Choose from a stunning array of colours to express your unique style, ensuring a flawless and long-lasting finish that leaves your nails looking fabulous and feeling resilient.',
+    duration: '45 mins',
+    price: '£35',
+    badge: 'Resilient',
+    highlights: ['Lightweight & adds exceptional strength', 'Stunning array of colours', 'Flawless, resilient & long-lasting finish'],
+    serviceIdToBook: 'dipping-powder-overlay'
   }
 ];
 
 export const REVIEWS: Review[] = [
   {
     id: 'rev-1',
-    author: 'Sophie L. (Royal Wharf resident)',
+    author: 'Loulou Gielly',
+    badge: 'Local Guide',
     rating: 5,
-    date: 'August 2026',
-    service: 'Signature Head Spa (75 mins)',
-    comment: 'The absolute best experience in East London! The halo waterfall water ring gave me instant relaxation. My scalp feels completely weightless and clean. Donna is so attentive and welcoming!',
-    verified: true
+    date: '3 weeks ago',
+    service: 'Gel Pedicure with Massage Chair & Drink',
+    comment: 'Honestly one the one best nail studios in my opinion. Had a gel pedicure done here and they had massage chairs and a drink menu included within the appointment. All that at an affordable price?!? Perfect! And the lady who did my pedicure took extra care of my feet and not just my toes. I appreciate it 🙏🏻 thank you and I’ll be back !!',
+    verified: true,
+    source: 'Google Review'
   },
   {
     id: 'rev-2',
-    author: 'Gemma M.',
+    author: 'Seycha Rashman',
+    badge: 'Local Guide',
     rating: 5,
-    date: 'July 2026',
-    service: 'BIAB Builder Gel Manicure',
-    comment: 'Chloe’s Russian manicure work is unmatched. My cuticles have never looked this clean. The BIAB lasted 4 whole weeks without a single chip. Plus the complimentary herbal tea is divine.',
-    verified: true
+    date: '2 months ago',
+    service: 'Pedicure, Coffee & Hot Stone Steam',
+    comment: 'Such beautiful people just go above and beyond for you…. Coffee hot stone steam it’s just perfection!! My nail colour didn’t work out well but that’s ok because the kindness of the staff made up for it! Thank you for my incredible pedicure!',
+    verified: true,
+    source: 'Google Review'
   },
   {
     id: 'rev-3',
-    author: 'Elena & Mark K.',
+    author: 'Joanna Drew',
     rating: 5,
-    date: 'August 2026',
-    service: 'The Grand Bloom Duo Package',
-    comment: 'Booked this for my birthday and it was pure bliss! The private head spa suite is so quiet, smells like honey and eucalyptus. 10/10 recommendation for anyone near Pontoon Dock.',
-    verified: true
+    date: '3 weeks ago',
+    service: 'Gel Pedicure & Full Set Gel Acrylics',
+    comment: 'I had the most amazing experience at this nail salon today! I had a pedicure with gel and a full set of gel acrylics, and I honestly couldn’t be happier with the results. The salon is beautifully clean, tidy and has a lovely minimalistic feel. Both the male and female staff were so welcoming, polite and friendly — they made me feel comfortable straight away and were great at keeping conversation flowing. The pedicure was honestly the best I have ever had in my life! They don’t rush their work; they take their time, pay attention to every little detail and are true perfectionists. You can really tell they care about the quality of what they do. I’ve tried nearly all the nail salons around West Wickham and had been going to Beautiful Nails for over three years, but I can confidently say I’ve found my new favourite place. I’ll definitely be returning! 💅✨',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-4',
+    author: 'Quynh Nhu',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Pedicure & Full Set',
+    comment: 'I got a pedicure and a full set here right when they opened. Even though they were very busy, they still took great care of me, and my nails look absolutely beautiful — 10/10. I highly recommend coming to experience it yourself; you’ll love it I can’t wait for my next appointment in two weeks',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-5',
+    author: 'Hatis',
+    rating: 5,
+    date: '4 weeks ago',
+    service: 'Nail Styling & Care',
+    comment: 'I had such a lovely experience today. Everyone was so friendly, welcoming, and easy to chat to, which made me feel comfortable from the moment I walked in. They took great care with my nails and did an amazing job – I absolutely love the result! The salon has such a warm and relaxing atmosphere. I highly recommend this place and will definitely be coming back. Thank you so much!',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-6',
+    author: 'Sauran Gurung',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Full Set Nail Art & Care',
+    comment: 'Absolutely loved my visit! The team was so warm, friendly, and welcoming, and they made me feel comfortable right away. The service was professional, and the attention to detail was fantastic. I’m really happy with how my nails turned out and couldn’t have asked for a better experience. I would definitely recommend this salon to anyone looking for quality service and a lovely atmosphere! Defo the best in town 10/10',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-7',
+    author: 'Sophia Louise',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Nail Care & Shaping',
+    comment: 'Really lovely experience. The salon is clean, modern and stylish, and the two guys working there were so welcoming and friendly. They chatted with me the whole time and made me feel really comfortable. They listened to exactly what I wanted and I felt really well looked after from start to finish. Both of them were so lovely, and I’m really happy with my nails. Would definitely recommend! ⭐ 💅',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-8',
+    author: 'Katie Musham',
+    rating: 5,
+    date: '1 month ago',
+    service: 'Manicure Treatment',
+    comment: 'Very nice nail bar, kept to appointment time, lovely nails 💅 relaxing - leave enough time as they take their time to do a good job.',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-9',
+    author: 'Kate Lawrence',
+    rating: 5,
+    date: '1 month ago',
+    service: 'Pedicure & Manicure',
+    comment: 'I have had a lovely time today at the reverie nail salon in West Wickham: I had a pedicure and a manicure. Prien looked after me so well and did a fantastic job - we had a lovely conversation and I will definitely be returning 🤩😘🤗',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-10',
+    author: 'Women Thrive Media',
+    badge: 'Verified Business',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Couple Pedicure Ritual with Hot Stone & Steam',
+    comment: 'What a lovely salon. Me and my husband went to get a pedicure done on a Sunday, and was warmly welcomed (even at nearly closing time). It was a great experience and really thorough service, with hot stone foot massage, scrub, foot steam and massage. I really enjoyed it and happy with end result. Also, the salon is really clean, modern, staff is friendly and the chairs so comfy. It is a lovely family run business. Thanks so very much',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-11',
+    author: 'Jasmin Gurung',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Holiday Nail Care & Shaping',
+    comment: 'I was referred to this salon by a friend who had a really good experience here, so I thought I’d give it a try before my upcoming holiday. I’m so glad I did! I had pre-booked my appointment and it ran exactly on time. From the moment I walked in, everyone was friendly and welcoming. The lady who did my nails was lovely – very professional, friendly, and easy to talk to. She did an amazing job with my nails, but what stood out even more was the level of service. She checked in with me throughout the appointment to make sure I was happy with everything and asked if I had any questions or wanted anything changed. The salon itself was also very clean and well looked after. I left really happy with my nails and felt like they genuinely cared about making sure I was happy with the final result. Overall, it was a great experience and I’ll definitely be coming back in the future. Thank you!',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-12',
+    author: 'John Smith',
+    rating: 5,
+    date: '2 months ago',
+    service: 'Manicure & Pedicure',
+    comment: 'I recently had manicure and pedicure here, and I was thoroughly happy. The staff were polite and professional, the salon is spotless, and all tools are hygienically maintained. I truly enjoyed the service and will definitely be returning. Highly recommended!',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-13',
+    author: 'Lisa P',
+    rating: 5,
+    date: '1 month ago',
+    service: 'Gel Manicure & Pedicure',
+    comment: 'My first visit here today after reading lots of great local reviews. Such a lovely welcoming atmosphere, instantly calm with relaxing music and aromatherapy oil being diffused. I had a gel manicure & pedicure & so much care was taken my nails look wonderful and my feet feel fabulous and ready for summer! I\'ll be rebooking in a few weeks time. Wishing this new salon all the best- I know there are different nail shops locally but this is spending really different 😊',
+    verified: true,
+    source: 'Google Review'
+  },
+  {
+    id: 'rev-14',
+    author: 'Louise Davies',
+    rating: 5,
+    date: '1 month ago',
+    service: 'Deluxe Pedicure with Hot Stone & Towel Wrap',
+    comment: 'I have just had the best pedicure at this new nail studio in West Wickham. Everyone who works there is so friendly and the salon is absolutely spotless. It has a really welcoming atmosphere from the moment you walk in. The pedicure itself was fantastic with excellent attention to detail. I particularly loved the hot stone massage and hot towel wrap which made it feel that little bit more special. My feet have never looked or felt better. I’ll definitely be back and highly recommend!',
+    verified: true,
+    source: 'Google Review'
+  }
+];
+
+export const THERAPISTS: Therapist[] = [
+  {
+    id: 'th-1',
+    name: 'Reverie Master Technician',
+    title: 'Senior BIAB & Nail Artist',
+    bio: 'Specialist in custom nail art, Russian precision manicure, and durable BIAB apex overlays.',
+    specialties: ['BIAB Overlay', 'Custom Nail Art', 'Full Set Ombré'],
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+    experienceYears: 7,
+    rating: 5.0
+  }
+];
+
+export const PRODUCTS: Product[] = [
+  {
+    id: 'prod-1',
+    name: 'Nourishing Botanical Cuticle Elixir',
+    tagline: 'Organic Jojoba, Vitamin E & Sweet Almond Oil',
+    priceGBP: 14,
+    rating: 5.0,
+    reviewCount: 48,
+    category: 'nail-care',
+    description: 'Ultra-nourishing organic oil blend to restore healthy cuticles and enhance nail shine.',
+    volume: '30ml Dropper',
+    benefits: ['Deep hydration', 'Prevents hangnails', 'Non-greasy rapid absorption'],
+    image: 'https://images.unsplash.com/photo-1608248597359-002d91b490a6?auto=format&fit=crop&q=80&w=600',
+    stockCount: 15,
+    isBestSeller: true
+  }
+];
+
+export const GIFT_VOUCHERS = [
+  {
+    id: 'voucher-1',
+    name: 'Classic Luxury Nail Gift Card',
+    amountGBP: 50,
+    popular: true,
+    description: 'Perfect for Gel Manicures, BIAB Overlays & Custom Nail Art.'
+  },
+  {
+    id: 'voucher-2',
+    name: 'Deluxe Mani + Pedi Experience',
+    amountGBP: 68,
+    popular: false,
+    description: 'Full Gel Manicure + Pedicure with hot stone massage treatment.'
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'What should I wear or prepare for a Head Spa session?',
-    answer: 'Wear comfortable clothing. We provide soft spa robes and towels. Please remove hair extensions or tight braids prior to your appointment so we can thoroughly analyze and treat your scalp.',
-    category: 'head-spa'
+    question: 'How do I book an appointment?',
+    answer: 'You can easily book online 24/7 by clicking "Book your session now" to open our official Fresha booking page, or you can call us directly at +20 3 1436868.',
+    category: 'booking'
   },
   {
     id: 'faq-2',
-    question: 'Are your products non-toxic, vegan, and pregnancy-safe?',
-    answer: 'Yes! We prioritize plant-based, 10-free, cruelty-free, and organic formulas. Our manicures and head spa oils are safe for expectant mothers (please inform therapist of any specific allergies).',
-    category: 'nail-care'
-  },
-  {
-    id: 'faq-3',
-    question: 'How do I reach the sanctuary at 55 Royal Crest Avenue?',
-    answer: 'We are located at Unit 1.1-02, 55 Royal Crest Avenue, London E16 2EB. We are a 3-minute walk from Pontoon Dock DLR Station (Royal Docks) or 5 minutes from Royal Wharf Pier.',
+    question: 'Where is Reverie Nail Studio located?',
+    answer: 'We are located at 133 High Street, West Wickham, BR4 0LU, United Kingdom. You can find us right on the high street with convenient parking and transport links.',
     category: 'location'
   },
   {
+    id: 'faq-3',
+    question: 'What is Dipping Powder and how does it work?',
+    answer: 'Dipping Powder is an innovative, lightweight technique that adds exceptional strength and durability to your natural nails or extensions with vibrant colour that lasts for weeks.',
+    category: 'nail-care'
+  },
+  {
     id: 'faq-4',
-    question: 'What is your cancellation and deposit policy?',
-    answer: 'Free cancellations or rescheduling are permitted up to 24 hours before your scheduled appointment time via link in your email confirmation or WhatsApp +44 7777 326555.',
+    question: 'How often should I get an Acrylic or Ombré Infill?',
+    answer: 'We recommend booking an acrylic or ombré infill every 2 to 3 weeks to address natural regrowth, rebalance the structure, and keep your manicure looking flawless.',
+    category: 'nail-care'
+  },
+  {
+    id: 'faq-5',
+    question: 'Do you accept walk-in appointments?',
+    answer: 'Yes, walk-ins are warmly welcome subject to daily technician availability! To secure your preferred time slot, booking via Fresha is highly recommended.',
     category: 'booking'
+  },
+  {
+    id: 'faq-6',
+    question: 'Can you fix a broken or chipped nail?',
+    answer: 'Yes! We offer dedicated nail repair service (£5) to restore cracked, chipped, or broken nails so your full set remains strong and uniform.',
+    category: 'nail-care'
+  },
+  {
+    id: 'faq-7',
+    question: 'How does professional enhancement removal work?',
+    answer: 'Our professional removal service (from £10) gently and safely removes gel polish or acrylic extensions while protecting your natural nails from damage.',
+    category: 'nail-care'
   }
 ];
 
 export const HEAD_SPA_STEPS = [
   {
     step: 1,
-    title: 'Microscopic Scalp Diagnostic',
-    description: 'High-definition digital camera analysis of your scalp pores, oil balance, and hair follicle health.',
-    icon: 'Search'
+    title: 'Consultation & Nail Health Analysis',
+    duration: '5 Mins',
+    description: 'Assessment of natural nail strength, cuticle health, and style consultation.',
+    iconName: 'Search',
+    sensoryDetail: 'Personalized treatment recommendation.'
   },
   {
     step: 2,
-    title: 'Organic Botanical Oil Steam',
-    description: 'Warm herbal steam mist combined with rosemary and honey oil to open pores and soften buildup.',
-    icon: 'Sparkles'
+    title: 'Precision Shaping & Cuticle Grooming',
+    duration: '15 Mins',
+    description: 'Gentle, damage-free dry cuticle refinement and custom nail shaping.',
+    iconName: 'Sparkles',
+    sensoryDetail: 'Clean aesthetic nail contours.'
   },
   {
     step: 3,
-    title: 'Halo Waterfall Hydrotherapy',
-    description: 'Our signature circular water ring cascading warm purified water over your forehead and scalp in gentle rhythmic waves.',
-    icon: 'Waves'
+    title: 'Exfoliation & Hot Towel Wrap',
+    duration: '10 Mins',
+    description: 'Invigorating skin exfoliation followed by steaming aromatic hot towels.',
+    iconName: 'Droplets',
+    sensoryDetail: 'Smooth skin and relaxed muscles.'
   },
   {
     step: 4,
-    title: 'Acupressure Scalp & Neck Massage',
-    description: 'Relieves cranial tension, headache pressure points, and shoulder tightness using natural oil blends.',
-    icon: 'HeartHandshake'
+    title: 'Hot Stone & Botanical Massage',
+    duration: '10 Mins',
+    description: 'Heated basalt stones with essential oils for soothing hand and foot relaxation.',
+    iconName: 'HeartHandshake',
+    sensoryDetail: 'Deep thermal tension relief.'
   },
   {
     step: 5,
-    title: 'Botanical Hair Mask & Rinsing',
-    description: 'Deep conditioning treatment enriched with raw honey proteins to lock in hydration and shine.',
-    icon: 'Droplets'
-  },
-  {
-    step: 6,
-    title: 'Herbal Tea Ritual',
-    description: 'Sip on our signature hot organic honey chrysanthemum tea while resting in our lounge.',
-    icon: 'Coffee'
-  },
-  {
-    step: 7,
-    title: 'Gentle Blow-Dry & Styling',
-    description: 'Finish with a soft rough dry or smooth blowout so you step out feeling radiant.',
-    icon: 'Wind'
+    title: 'BIAB Apex / Gel Application',
+    duration: '20 Mins',
+    description: 'Precision builder gel or high-gloss gel polish cured under low-heat LED.',
+    iconName: 'Waves',
+    sensoryDetail: 'Flawless, mirror-shine finish.'
   }
 ];
+
+
+
