@@ -122,12 +122,12 @@ export const Header: React.FC<HeaderProps> = ({
             <span>{SALON_INFO.phone}</span>
           </a>
 
-          {/* Primary Book Now CTA */}
+          {/* Primary Book Now CTA (hidden on mobile, visible from sm screen up) */}
           <a
             href={FRESHA_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98 whitespace-nowrap"
+            className="hidden sm:flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98 whitespace-nowrap"
           >
             <Calendar className="w-3.5 h-3.5 text-amber-300" />
             <span>Book Now</span>
