@@ -25,11 +25,12 @@ export const Header: React.FC<HeaderProps> = ({
 
   const navItems = [
     { id: 'hero', label: 'Home' },
-    { id: 'services', label: 'Services & Prices' },
-    { id: 'gallery', label: 'Featured Services' },
+    { id: 'services', label: 'Services' },
+    { id: 'gallery', label: 'Featured' },
+    { id: 'reviews', label: 'Reviews' },
     { id: 'faqs', label: 'FAQs' },
-    { id: 'philosophy', label: 'About Us' },
-    { id: 'location', label: 'Location & Contact' },
+    { id: 'philosophy', label: 'About' },
+    { id: 'location', label: 'Contact' },
   ];
 
   const handleNavClick = (id: string) => {
@@ -46,27 +47,26 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Top Announcement Bar */}
       <div className="bg-[#4A3B2C] text-[#F4ECE1] text-xs font-light py-2 px-4 text-center flex justify-between items-center max-w-7xl mx-auto sm:px-6">
         <div className="hidden md:flex items-center space-x-4 text-amber-200/90 text-[11px] tracking-wider uppercase">
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1 whitespace-nowrap">
             <MapPin className="w-3 h-3 text-amber-300" />
             133 High Street, West Wickham, BR4 0LU
           </span>
           <span>•</span>
-          <span className="flex items-center gap-1">
+          <span className="flex items-center gap-1 whitespace-nowrap">
             <Clock className="w-3 h-3 text-amber-300" />
             Mon - Sat: 09:30 - 18:30
           </span>
         </div>
         
-        <div className="mx-auto md:mx-0 flex items-center gap-2 text-xs font-medium tracking-wide">
-          <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse" />
+        <div className="mx-auto md:mx-0 flex items-center gap-2 text-xs font-medium tracking-wide whitespace-nowrap">
+          <Sparkles className="w-3.5 h-3.5 text-amber-300 animate-pulse shrink-0" />
           <span>REVERIE NAIL STUDIO • West Wickham</span>
-          <span className="hidden sm:inline text-amber-200/80">| Manicure, Pedicure, BIAB & Extensions</span>
         </div>
 
         <div className="hidden lg:flex items-center space-x-3 text-xs">
           <a
             href={SALON_INFO.phoneTel}
-            className="hover:text-amber-300 transition-colors flex items-center gap-1 text-[11px] tracking-wider uppercase"
+            className="hover:text-amber-300 transition-colors flex items-center gap-1 text-[11px] tracking-wider uppercase whitespace-nowrap"
           >
             <Phone className="w-3 h-3 text-emerald-400" />
             {SALON_INFO.phone}
@@ -79,28 +79,28 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Brand Logo */}
         <button
           onClick={() => handleNavClick('hero')}
-          className="group text-left flex items-center gap-3 focus:outline-none"
+          className="group text-left flex items-center gap-3 focus:outline-none shrink-0"
         >
-          <div className="w-10 h-10 rounded-full bg-[#EADCC9] border border-[#CBB292] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-full bg-[#EADCC9] border border-[#CBB292] flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
             <span className="text-[#4A3B2C] font-serif text-lg font-bold">R</span>
           </div>
           <div>
-            <span className="block font-serif text-2xl tracking-[0.15em] text-[#3D2E1E] font-semibold uppercase leading-tight">
+            <span className="block font-serif text-2xl tracking-[0.15em] text-[#3D2E1E] font-semibold uppercase leading-tight whitespace-nowrap">
               REVERIE
             </span>
-            <span className="block text-[10px] tracking-[0.25em] text-[#8C7355] uppercase font-light">
+            <span className="block text-[10px] tracking-[0.25em] text-[#8C7355] uppercase font-light whitespace-nowrap">
               NAIL STUDIO • WEST WICKHAM
             </span>
           </div>
         </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center space-x-7">
+        <nav className="hidden lg:flex items-center space-x-4 xl:space-x-7">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className={`text-xs uppercase tracking-[0.12em] font-medium transition-colors py-1 relative ${
+              className={`text-xs uppercase tracking-[0.12em] font-medium transition-colors py-1 relative whitespace-nowrap ${
                 activeSection === item.id
                   ? 'text-[#3D2E1E] font-semibold border-b-2 border-[#8C7355]'
                   : 'text-[#6E5A44] hover:text-[#3D2E1E]'
@@ -112,11 +112,11 @@ export const Header: React.FC<HeaderProps> = ({
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center space-x-2 sm:space-x-3">
+        <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
           {/* Phone call button */}
           <a
             href={SALON_INFO.phoneTel}
-            className="hidden md:flex items-center gap-1.5 text-xs text-[#5A4836] hover:text-[#2C2015] font-semibold px-3 py-2"
+            className="hidden xl:flex items-center gap-1.5 text-xs text-[#5A4836] hover:text-[#2C2015] font-semibold px-3 py-2 whitespace-nowrap"
           >
             <Phone className="w-3.5 h-3.5 text-[#8C7355]" />
             <span>{SALON_INFO.phone}</span>
@@ -127,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
             href={FRESHA_BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98"
+            className="flex items-center gap-2 bg-[#4A3B2C] hover:bg-[#32271C] text-[#F9F5EF] px-4 sm:px-5 py-2.5 rounded-full text-xs font-medium tracking-widest uppercase transition-all shadow-sm hover:shadow-md active:scale-98 whitespace-nowrap"
           >
             <Calendar className="w-3.5 h-3.5 text-amber-300" />
             <span>Book Now</span>
@@ -137,7 +137,7 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="xl:hidden p-2 rounded-lg text-[#4A3B2C] hover:bg-[#EADCC9]/50 focus:outline-none"
+            className="lg:hidden p-2 rounded-lg text-[#4A3B2C] hover:bg-[#EADCC9]/50 focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -147,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="xl:hidden bg-[#FAF7F2] border-b border-[#E8DFD1] px-6 py-6 space-y-4 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden bg-[#FAF7F2] border-b border-[#E8DFD1] px-6 py-6 space-y-4 animate-in slide-in-from-top-2 duration-200">
           <div className="flex flex-col space-y-3">
             {navItems.map((item) => (
               <button
